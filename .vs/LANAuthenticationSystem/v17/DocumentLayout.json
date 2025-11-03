@@ -1,0 +1,501 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\models\\messagepacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\models\\messagepacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\models\\violation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\models\\violation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\data\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\data\\configmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\services\\monitorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\services\\monitorservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\services\\udpalertsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\services\\udpalertsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\services\\tcpclientservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\models\\messagepacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\models\\messagepacket.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\models\\bannedsite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\models\\bannedsite.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\models\\violation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\models\\violation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\data\\bannedsiterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\data\\bannedsiterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\data\\violationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\data\\violationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\data\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\data\\databasehelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\services\\encryptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\services\\udpreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\services\\udpreceiver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\services\\tcpserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\services\\tcpserverservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\logsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\logsform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\bannedsitesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\bannedsitesform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\manageusersform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\manageusersform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\mainform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\loginform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthserver\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{00BEB6BF-405E-46C2-8684-1035C59D55BC}|LANAuthServer\\LANAuthServer.csproj|solutionrelative:lanauthserver\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\forms\\loginform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|c:\\users\\admin\\onedrive\\m\u00E1y t\u00EDnh\\lanauthenticationsystem\\lanauthclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{92069CB2-D1E9-4F5B-AAC0-3D6A893D9DDA}|LANAuthClient\\LANAuthClient.csproj|solutionrelative:lanauthclient\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MessagePacket.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Models\\MessagePacket.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Models\\MessagePacket.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Models\\MessagePacket.cs",
+              "RelativeToolTip": "LANAuthClient\\Models\\MessagePacket.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:36:00.553Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Violation.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Models\\Violation.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Models\\Violation.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Models\\Violation.cs",
+              "RelativeToolTip": "LANAuthClient\\Models\\Violation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:54.845Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ConfigManager.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Data\\ConfigManager.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Data\\ConfigManager.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Data\\ConfigManager.cs",
+              "RelativeToolTip": "LANAuthClient\\Data\\ConfigManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:48.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EncryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\EncryptionService.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Services\\EncryptionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\EncryptionService.cs",
+              "RelativeToolTip": "LANAuthClient\\Services\\EncryptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:41.337Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MonitorService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\MonitorService.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Services\\MonitorService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\MonitorService.cs",
+              "RelativeToolTip": "LANAuthClient\\Services\\MonitorService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:34.963Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "UdpAlertSender.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\UdpAlertSender.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Services\\UdpAlertSender.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\UdpAlertSender.cs",
+              "RelativeToolTip": "LANAuthClient\\Services\\UdpAlertSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:29.338Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TcpClientService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\TcpClientService.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Services\\TcpClientService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Services\\TcpClientService.cs",
+              "RelativeToolTip": "LANAuthClient\\Services\\TcpClientService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:35:22.99Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Forms\\MainForm.cs [Design]",
+              "RelativeToolTip": "LANAuthClient\\Forms\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:34:39.513Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "MessagePacket.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\MessagePacket.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Models\\MessagePacket.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\MessagePacket.cs",
+              "RelativeToolTip": "LANAuthServer\\Models\\MessagePacket.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:47.487Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "BannedSite.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\BannedSite.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Models\\BannedSite.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\BannedSite.cs",
+              "RelativeToolTip": "LANAuthServer\\Models\\BannedSite.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:41.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Violation.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\Violation.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Models\\Violation.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\Violation.cs",
+              "RelativeToolTip": "LANAuthServer\\Models\\Violation.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:35.332Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "User.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\User.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Models\\User.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Models\\User.cs",
+              "RelativeToolTip": "LANAuthServer\\Models\\User.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:28.442Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "BannedSiteRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\BannedSiteRepository.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Data\\BannedSiteRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\BannedSiteRepository.cs",
+              "RelativeToolTip": "LANAuthServer\\Data\\BannedSiteRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:18.678Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "ViolationRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\ViolationRepository.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Data\\ViolationRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\ViolationRepository.cs",
+              "RelativeToolTip": "LANAuthServer\\Data\\ViolationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:12.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "UserRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\UserRepository.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Data\\UserRepository.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\UserRepository.cs",
+              "RelativeToolTip": "LANAuthServer\\Data\\UserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:33:05.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "DatabaseHelper.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\DatabaseHelper.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Data\\DatabaseHelper.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Data\\DatabaseHelper.cs",
+              "RelativeToolTip": "LANAuthServer\\Data\\DatabaseHelper.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:32:58.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "EncryptionService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\EncryptionService.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Services\\EncryptionService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\EncryptionService.cs",
+              "RelativeToolTip": "LANAuthServer\\Services\\EncryptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:32:44.697Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "EmailService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\EmailService.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Services\\EmailService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\EmailService.cs",
+              "RelativeToolTip": "LANAuthServer\\Services\\EmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:32:37.042Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "UdpReceiver.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\UdpReceiver.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Services\\UdpReceiver.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\UdpReceiver.cs",
+              "RelativeToolTip": "LANAuthServer\\Services\\UdpReceiver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:32:30.708Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "TcpServerService.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\TcpServerService.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Services\\TcpServerService.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Services\\TcpServerService.cs",
+              "RelativeToolTip": "LANAuthServer\\Services\\TcpServerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:32:19.225Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "LogsForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LogsForm.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\LogsForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LogsForm.cs [Design]",
+              "RelativeToolTip": "LANAuthServer\\Forms\\LogsForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:26:50.558Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "BannedSitesForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\BannedSitesForm.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\BannedSitesForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\BannedSitesForm.cs [Design]",
+              "RelativeToolTip": "LANAuthServer\\Forms\\BannedSitesForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:26:32.328Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "ManageUsersForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\ManageUsersForm.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\ManageUsersForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\ManageUsersForm.cs [Design]",
+              "RelativeToolTip": "LANAuthServer\\Forms\\ManageUsersForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:26:17.759Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "MainForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\MainForm.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\MainForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\MainForm.cs [Design]",
+              "RelativeToolTip": "LANAuthServer\\Forms\\MainForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:25:27.624Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "LoginForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LoginForm.Designer.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\LoginForm.Designer.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LoginForm.Designer.cs",
+              "RelativeToolTip": "LANAuthServer\\Forms\\LoginForm.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:24:06.485Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Program.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Program.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Program.cs",
+              "RelativeToolTip": "LANAuthClient\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:20:57.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "LANAuthClient\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthClient\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "LANAuthClient\\Forms\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:20:01.149Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "LoginForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LoginForm.cs",
+              "RelativeDocumentMoniker": "LANAuthServer\\Forms\\LoginForm.cs",
+              "ToolTip": "C:\\Users\\Admin\\OneDrive\\M\u00E1y t\u00EDnh\\LANAuthenticationSystem\\LANAuthServer\\Forms\\LoginForm.cs [Design]",
+              "RelativeToolTip": "LANAuthServer\\Forms\\LoginForm.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-03T15:19:38.656Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
