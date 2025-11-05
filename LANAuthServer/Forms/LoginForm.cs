@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LANAuthServer.forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace LANAuthServer
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
+
+        }
+
+        private void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            BannedSitesForm bannedSitesForm = new BannedSitesForm();
+            bannedSitesForm.ShowDialog();
         }
     }
 }
