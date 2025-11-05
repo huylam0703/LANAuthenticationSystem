@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LANAuthClient.Forms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +16,20 @@ namespace LANAuthClient
         public LoginForm()
         {
             InitializeComponent();
+        }
+
+        private void ButtonLogin_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            // Mở form chính
+            MainForm mainForm = new MainForm();
+            mainForm.ShowDialog();
+        }
+
+        private void LoginForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

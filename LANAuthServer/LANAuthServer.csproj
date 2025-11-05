@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,11 +51,29 @@
     <Compile Include="Data\DatabaseHelper.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Data\ViolationRepository.cs" />
+    <Compile Include="Forms\AddWebForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddWebForm.Designer.cs">
+      <DependentUpon>AddWebForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BannedSitesForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\BannedSitesForm.Designer.cs">
       <DependentUpon>BannedSitesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteEmployeeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteEmployeeForm.Designer.cs">
+      <DependentUpon>DeleteEmployeeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\DeleteWebForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\DeleteWebForm.Designer.cs">
+      <DependentUpon>DeleteWebForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\LoginForm.cs">
       <SubType>Form</SubType>
@@ -62,23 +81,11 @@
     <Compile Include="Forms\LoginForm.Designer.cs">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\LogsForm.cs">
+    <Compile Include="Forms\registerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\LogsForm.Designer.cs">
-      <DependentUpon>LogsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\MainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ManageUsersForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ManageUsersForm.Designer.cs">
-      <DependentUpon>ManageUsersForm.cs</DependentUpon>
+    <Compile Include="Forms\registerForm.Designer.cs">
+      <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\BannedSite.cs" />
     <Compile Include="Models\MessagePacket.cs" />
@@ -90,8 +97,23 @@
     <Compile Include="Services\EncryptionService.cs" />
     <Compile Include="Services\TcpServerService.cs" />
     <Compile Include="Services\UdpReceiver.cs" />
-    <EmbeddedResource Include="Forms\MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\AddWebForm.resx">
+      <DependentUpon>AddWebForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BannedSitesForm.resx">
+      <DependentUpon>BannedSitesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteEmployeeForm.resx">
+      <DependentUpon>DeleteEmployeeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\DeleteWebForm.resx">
+      <DependentUpon>DeleteWebForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\registerForm.resx">
+      <DependentUpon>registerForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
