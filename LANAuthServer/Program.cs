@@ -1,4 +1,6 @@
 ﻿using LANAuthServer.forms;
+using LANAuthServer.NetWork;
+using LANAuthServer.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,9 +17,16 @@ namespace LANAuthServer
         [STAThread]
         static void Main()
         {
+            ServerListener server = new ServerListener();
+            server.Start();
+            var authService = new AuthService();
+            authService.EnsureAdminAccount();
+
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
+
+           
         }
     }
 }

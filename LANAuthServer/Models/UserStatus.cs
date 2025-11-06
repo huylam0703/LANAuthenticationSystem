@@ -4,9 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LANAuthServer.Services
+namespace LANAuthServer.Models
 {
-    internal class EncryptionService
+    public enum UserStatus
     {
+        online = 1,
+        offline = 0
     }
 }
