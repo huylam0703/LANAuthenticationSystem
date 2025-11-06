@@ -1,4 +1,5 @@
-﻿using System;
+﻿using LANAuthServer.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,8 @@ namespace LANAuthServer.Forms
 {
     public partial class DeleteEmployeeForm : Form
     {
+        UserService _userService = new UserService();
+
         public DeleteEmployeeForm()
         {
             InitializeComponent();
@@ -24,11 +27,36 @@ namespace LANAuthServer.Forms
 
         private void buttonDelEmployee_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Xóa nhân viên thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (result == DialogResult.OK)
+
+            string userCode = textBoxDelByUserCode.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(userCode))
             {
-                this.Close();
+                MessageBox.Show("Vui lòng nhập mã nhân viên cần xóa!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                bool deleted = _userService.DeleteUserInfo(userCode);
+
+                if (deleted)
+                {
+                    MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy nhân viên với mã này.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi xóa nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+
+
     }
 }

@@ -112,6 +112,7 @@
             this.textBoxAddReturnPassword.Name = "textBoxAddReturnPassword";
             this.textBoxAddReturnPassword.Size = new System.Drawing.Size(363, 22);
             this.textBoxAddReturnPassword.TabIndex = 5;
+            this.textBoxAddReturnPassword.UseSystemPasswordChar = true;
             // 
             // textBoxAddPassword
             // 
@@ -119,6 +120,7 @@
             this.textBoxAddPassword.Name = "textBoxAddPassword";
             this.textBoxAddPassword.Size = new System.Drawing.Size(361, 22);
             this.textBoxAddPassword.TabIndex = 4;
+            this.textBoxAddPassword.UseSystemPasswordChar = true;
             // 
             // textBoxAddUsername
             // 

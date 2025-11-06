@@ -63,6 +63,8 @@
             this.BoxPassword.Name = "BoxPassword";
             this.BoxPassword.Size = new System.Drawing.Size(249, 22);
             this.BoxPassword.TabIndex = 9;
+            this.BoxPassword.UseSystemPasswordChar = true;
+            this.BoxPassword.TextChanged += new System.EventHandler(this.BoxPassword_TextChanged);
             // 
             // BoxUsername
             // 
