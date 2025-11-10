@@ -30,7 +30,7 @@
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxAddURLWeb = new System.Windows.Forms.TextBox();
-            this.buttonAddEmployee = new System.Windows.Forms.Button();
+            this.buttonDeleteBannedWeb = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -39,7 +39,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.textBoxAddURLWeb);
-            this.groupBox1.Controls.Add(this.buttonAddEmployee);
+            this.groupBox1.Controls.Add(this.buttonDeleteBannedWeb);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(7, 50);
             this.groupBox1.Name = "groupBox1";
@@ -54,16 +54,16 @@
             this.textBoxAddURLWeb.Size = new System.Drawing.Size(363, 22);
             this.textBoxAddURLWeb.TabIndex = 3;
             // 
-            // buttonAddEmployee
+            // buttonDeleteBannedWeb
             // 
-            this.buttonAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddEmployee.Location = new System.Drawing.Point(139, 98);
-            this.buttonAddEmployee.Name = "buttonAddEmployee";
-            this.buttonAddEmployee.Size = new System.Drawing.Size(119, 41);
-            this.buttonAddEmployee.TabIndex = 3;
-            this.buttonAddEmployee.Text = "Xác nhận";
-            this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            this.buttonDeleteBannedWeb.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonDeleteBannedWeb.Location = new System.Drawing.Point(139, 98);
+            this.buttonDeleteBannedWeb.Name = "buttonDeleteBannedWeb";
+            this.buttonDeleteBannedWeb.Size = new System.Drawing.Size(119, 41);
+            this.buttonDeleteBannedWeb.TabIndex = 3;
+            this.buttonDeleteBannedWeb.Text = "Xác nhận";
+            this.buttonDeleteBannedWeb.UseVisualStyleBackColor = true;
+            this.buttonDeleteBannedWeb.Click += new System.EventHandler(this.buttonDeleteBannedWeb_Click);
             // 
             // label1
             // 
@@ -105,7 +105,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxAddURLWeb;
-        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Button buttonDeleteBannedWeb;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label4;
     }

@@ -31,7 +31,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.textBoxAddDescription = new System.Windows.Forms.TextBox();
             this.textBoxAddURLWeb = new System.Windows.Forms.TextBox();
-            this.buttonAddEmployee = new System.Windows.Forms.Button();
+            this.buttonAddWebBanned = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,7 +42,7 @@
             // 
             this.groupBox1.Controls.Add(this.textBoxAddDescription);
             this.groupBox1.Controls.Add(this.textBoxAddURLWeb);
-            this.groupBox1.Controls.Add(this.buttonAddEmployee);
+            this.groupBox1.Controls.Add(this.buttonAddWebBanned);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(5, 50);
@@ -65,16 +65,16 @@
             this.textBoxAddURLWeb.Size = new System.Drawing.Size(363, 22);
             this.textBoxAddURLWeb.TabIndex = 3;
             // 
-            // buttonAddEmployee
+            // buttonAddWebBanned
             // 
-            this.buttonAddEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonAddEmployee.Location = new System.Drawing.Point(144, 173);
-            this.buttonAddEmployee.Name = "buttonAddEmployee";
-            this.buttonAddEmployee.Size = new System.Drawing.Size(119, 41);
-            this.buttonAddEmployee.TabIndex = 3;
-            this.buttonAddEmployee.Text = "Xác nhận";
-            this.buttonAddEmployee.UseVisualStyleBackColor = true;
-            this.buttonAddEmployee.Click += new System.EventHandler(this.buttonAddEmployee_Click);
+            this.buttonAddWebBanned.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonAddWebBanned.Location = new System.Drawing.Point(144, 173);
+            this.buttonAddWebBanned.Name = "buttonAddWebBanned";
+            this.buttonAddWebBanned.Size = new System.Drawing.Size(119, 41);
+            this.buttonAddWebBanned.TabIndex = 3;
+            this.buttonAddWebBanned.Text = "Xác nhận";
+            this.buttonAddWebBanned.UseVisualStyleBackColor = true;
+            this.buttonAddWebBanned.Click += new System.EventHandler(this.buttonAddWebBanned_Click);
             // 
             // label1
             // 
@@ -115,6 +115,7 @@
             this.Controls.Add(this.label4);
             this.Name = "AddWebForm";
             this.Text = "AddWebForm";
+            this.Load += new System.EventHandler(this.AddWebForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -127,7 +128,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.TextBox textBoxAddDescription;
         private System.Windows.Forms.TextBox textBoxAddURLWeb;
-        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Button buttonAddWebBanned;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label4;

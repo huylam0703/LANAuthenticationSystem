@@ -128,6 +128,7 @@
             this.textBoxAddUsername.Name = "textBoxAddUsername";
             this.textBoxAddUsername.Size = new System.Drawing.Size(363, 22);
             this.textBoxAddUsername.TabIndex = 3;
+            this.textBoxAddUsername.TextChanged += new System.EventHandler(this.textBoxAddUsername_TextChanged);
             // 
             // registerForm
             // 

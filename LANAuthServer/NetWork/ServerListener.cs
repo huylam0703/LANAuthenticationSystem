@@ -41,12 +41,11 @@ namespace LANAuthServer.NetWork
                     byte[] buffer = new byte[2048];
                     int bytesRead = stream.Read(buffer, 0, buffer.Length);
                     string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    Console.WriteLine($" Nhận dữ liệu: {message}");
+                    Console.WriteLine($"Nhận dữ liệu: {message}");
 
                     // ==== LOGIN REQUEST ====
                     if (message.StartsWith("LOGIN|"))
                     {
-                        // Format: LOGIN|username|password
                         string[] parts = message.Split('|');
                         if (parts.Length < 3)
                         {
@@ -79,8 +78,13 @@ namespace LANAuthServer.NetWork
                     // ==== UPDATE INFO ====
                     else if (message.StartsWith("UPDATE_INFO|"))
                     {
-                        // Format: UPDATE_INFO|userCode|fullName|email
                         string[] parts = message.Split('|');
+                        if (parts.Length < 4)
+                        {
+                            SendResponse(stream, "FAIL|Thiếu dữ liệu cập nhật");
+                            return;
+                        }
+
                         string userCode = parts[1];
                         string fullName = parts[2];
                         string email = parts[3];
@@ -88,6 +92,31 @@ namespace LANAuthServer.NetWork
                         bool updated = _userService.UpdateUserInfo(userCode, fullName, email);
                         string response = updated ? "SUCCESS|Cập nhật thành công" : "FAIL|Không thể cập nhật";
                         SendResponse(stream, response);
+                    }
+
+                    // ==== GET USER INFO ====
+                    else if (message.StartsWith("GET_USER_INFO|"))
+                    {
+                        // Format: GET_USER_INFO|userCode
+                        string[] parts = message.Split('|');
+                        if (parts.Length < 2)
+                        {
+                            SendResponse(stream, "FAIL|Thiếu mã người dùng");
+                            return;
+                        }
+
+                        string userCode = parts[1];
+                        User user = _userService.GetUserByCode(userCode);
+
+                        if (user != null)
+                        {
+                            string response = $"USER_INFO|{user.fullName}|{user.userCode}|{user.email}";
+                            SendResponse(stream, response);
+                        }
+                        else
+                        {
+                            SendResponse(stream, "FAIL|Không tìm thấy người dùng");
+                        }
                     }
 
                     // ==== UNKNOWN COMMAND ====

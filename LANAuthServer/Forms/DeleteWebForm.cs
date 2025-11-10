@@ -1,29 +1,47 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using LANAuthServer.Services;
+using System;
 using System.Windows.Forms;
 
 namespace LANAuthServer.Forms
 {
     public partial class DeleteWebForm : Form
-    {
+    {   
+        private readonly BannedWebService bannedWebService = new BannedWebService();
         public DeleteWebForm()
         {
             InitializeComponent();
         }
 
-        private void buttonAddEmployee_Click(object sender, EventArgs e)
+        private void buttonDeleteBannedWeb_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Xóa web cấm thành công", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            if (result == DialogResult.OK)
+            string url = textBoxAddURLWeb.Text;
+
+            if (string.IsNullOrEmpty(url)) {
+                MessageBox.Show("Vui lòng nhập đầy đủ thông tin!", "Cảnh báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
             {
-                this.Close();
+                bool del = bannedWebService.DeleteBannedWebsite(url);
+                if (del)
+                {
+                    MessageBox.Show("Xóa website bị chặn thành công!", "Thành công",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Website này khong co trong danh sách!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex) {
+                MessageBox.Show($"Lỗi khi thêm website: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        
     }
 }

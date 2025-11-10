@@ -1,6 +1,8 @@
 ﻿using LANAuthServer.Data;
 using LANAuthServer.Models;
+using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace LANAuthServer.Services
 {
@@ -29,5 +31,7 @@ namespace LANAuthServer.Services
             Console.WriteLine("Admin account created successfully.");
             
         }
+
+        
     }
 }

@@ -60,6 +60,11 @@ namespace LANAuthServer.Forms
 
         }
 
+        private void textBoxAddUsername_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
 
 
         // logic

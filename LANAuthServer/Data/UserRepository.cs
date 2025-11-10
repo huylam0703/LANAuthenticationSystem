@@ -1,6 +1,7 @@
 ﻿
 using LANAuthServer.Models;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
@@ -50,9 +51,9 @@ namespace LANAuthServer.Data
                     {
                         users.Add(new User
                         {
-                            userCode = reader.GetString("userCode"),
-                            fullName = reader.GetString("fullName"),
-                            email = reader.GetString("email"),
+                            userCode = reader["userCode"] as string,
+                            fullName = reader["fullName"] as string,
+                            email = reader["email"] == DBNull.Value ? null : reader["email"].ToString(),
                             Status = UserStatus.offline
                         });
                     }
@@ -140,6 +141,34 @@ namespace LANAuthServer.Data
             }
             return null;
         }
+
+        public User GetUserByCode(string userCode)
+        {
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                string query = "SELECT * FROM users WHERE userCode = @userCode LIMIT 1";
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@userCode", userCode);
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            return new User
+                            {
+                                userCode = reader["userCode"].ToString(),
+                                fullName = reader["fullName"].ToString(),
+                                email = reader["email"] == DBNull.Value ? null : reader["email"].ToString(),
+                                role = reader["role"].ToString()
+                            };
+                        }
+                    }
+                }
+            }
+            return null;
+        }
+
 
     }
 

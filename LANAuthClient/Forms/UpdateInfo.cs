@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
@@ -52,6 +47,12 @@ namespace LANAuthClient.Forms
             {
                 MessageBox.Show("Lỗi khi gửi yêu cầu: " + ex.Message);
             }
+        }
+
+        private void UpdateInfo_Load(object sender, EventArgs e)
+        {
+            
+
         }
     }
 }

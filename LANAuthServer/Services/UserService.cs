@@ -82,6 +82,10 @@ namespace LANAuthServer.Services
             return _userRepo.GetUserByUsername(username);
         }
 
+        public User GetUserByCode(string userCode)
+        {
+            return _userRepo.GetUserByCode(userCode);
+        }
 
 
     }

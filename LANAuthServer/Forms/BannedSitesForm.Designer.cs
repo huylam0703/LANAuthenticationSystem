@@ -45,6 +45,7 @@
             this.TotalEmployeeOnline = new System.Windows.Forms.Label();
             this.TotalEmployee = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.buttonRefeshViPham = new System.Windows.Forms.Button();
             this.LabelTotalListViolate = new System.Windows.Forms.Label();
             this.LabelTotal = new System.Windows.Forms.Label();
             this.groupBoxViolate = new System.Windows.Forms.GroupBox();
@@ -53,6 +54,7 @@
             this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.LabelSearch = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.buttonRefeshUser = new System.Windows.Forms.Button();
             this.ButtonDelete = new System.Windows.Forms.Button();
             this.ButtonRegister = new System.Windows.Forms.Button();
             this.LabelTotalEmployeeList = new System.Windows.Forms.Label();
@@ -66,13 +68,13 @@
             this.ButtonDeleteWeb = new System.Windows.Forms.Button();
             this.ButtonWebBan = new System.Windows.Forms.Button();
             this.LabelTotalWebBannedList = new System.Windows.Forms.Label();
+            this.buttonRefeshBanned = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.button3 = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.ButtonRefeshData = new System.Windows.Forms.Button();
             this.ButtonNotification = new System.Windows.Forms.Button();
             this.textBoxNonfication = new System.Windows.Forms.TextBox();
             this.buttonExitForm = new System.Windows.Forms.Button();
@@ -250,6 +252,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.buttonRefeshViPham);
             this.tabPage2.Controls.Add(this.LabelTotalListViolate);
             this.tabPage2.Controls.Add(this.LabelTotal);
             this.tabPage2.Controls.Add(this.groupBoxViolate);
@@ -263,6 +266,16 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Danh sách vi phạm";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // buttonRefeshViPham
+            // 
+            this.buttonRefeshViPham.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefeshViPham.Location = new System.Drawing.Point(1055, 10);
+            this.buttonRefeshViPham.Name = "buttonRefeshViPham";
+            this.buttonRefeshViPham.Size = new System.Drawing.Size(126, 49);
+            this.buttonRefeshViPham.TabIndex = 6;
+            this.buttonRefeshViPham.Text = "Refesh";
+            this.buttonRefeshViPham.UseVisualStyleBackColor = true;
             // 
             // LabelTotalListViolate
             // 
@@ -307,7 +320,7 @@
             // 
             // ButtonSearch
             // 
-            this.ButtonSearch.Location = new System.Drawing.Point(966, 20);
+            this.ButtonSearch.Location = new System.Drawing.Point(780, 17);
             this.ButtonSearch.Name = "ButtonSearch";
             this.ButtonSearch.Size = new System.Drawing.Size(101, 32);
             this.ButtonSearch.TabIndex = 2;
@@ -318,7 +331,7 @@
             // 
             this.textBoxSearch.Location = new System.Drawing.Point(162, 20);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(780, 27);
+            this.textBoxSearch.Size = new System.Drawing.Size(612, 27);
             this.textBoxSearch.TabIndex = 1;
             // 
             // LabelSearch
@@ -333,6 +346,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.buttonRefeshUser);
             this.tabPage3.Controls.Add(this.ButtonDelete);
             this.tabPage3.Controls.Add(this.ButtonRegister);
             this.tabPage3.Controls.Add(this.LabelTotalEmployeeList);
@@ -348,6 +362,17 @@
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Quản lí nhân viên";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // buttonRefeshUser
+            // 
+            this.buttonRefeshUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefeshUser.Location = new System.Drawing.Point(1054, 10);
+            this.buttonRefeshUser.Name = "buttonRefeshUser";
+            this.buttonRefeshUser.Size = new System.Drawing.Size(126, 49);
+            this.buttonRefeshUser.TabIndex = 14;
+            this.buttonRefeshUser.Text = "Refesh";
+            this.buttonRefeshUser.UseVisualStyleBackColor = true;
+            this.buttonRefeshUser.Click += new System.EventHandler(this.button1_Click);
             // 
             // ButtonDelete
             // 
@@ -413,7 +438,7 @@
             // 
             // ButtonSearchEmployee
             // 
-            this.ButtonSearchEmployee.Location = new System.Drawing.Point(965, 17);
+            this.ButtonSearchEmployee.Location = new System.Drawing.Point(781, 14);
             this.ButtonSearchEmployee.Name = "ButtonSearchEmployee";
             this.ButtonSearchEmployee.Size = new System.Drawing.Size(101, 32);
             this.ButtonSearchEmployee.TabIndex = 8;
@@ -424,7 +449,7 @@
             // 
             this.textBoxSearchEmployee.Location = new System.Drawing.Point(161, 17);
             this.textBoxSearchEmployee.Name = "textBoxSearchEmployee";
-            this.textBoxSearchEmployee.Size = new System.Drawing.Size(780, 27);
+            this.textBoxSearchEmployee.Size = new System.Drawing.Size(614, 27);
             this.textBoxSearchEmployee.TabIndex = 7;
             // 
             // label3
@@ -442,6 +467,7 @@
             this.tabPage4.Controls.Add(this.ButtonDeleteWeb);
             this.tabPage4.Controls.Add(this.ButtonWebBan);
             this.tabPage4.Controls.Add(this.LabelTotalWebBannedList);
+            this.tabPage4.Controls.Add(this.buttonRefeshBanned);
             this.tabPage4.Controls.Add(this.label4);
             this.tabPage4.Controls.Add(this.groupBox2);
             this.tabPage4.Controls.Add(this.button3);
@@ -486,6 +512,17 @@
             this.LabelTotalWebBannedList.TabIndex = 19;
             this.LabelTotalWebBannedList.Text = "9 web bị cấm";
             // 
+            // buttonRefeshBanned
+            // 
+            this.buttonRefeshBanned.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonRefeshBanned.Location = new System.Drawing.Point(1051, 6);
+            this.buttonRefeshBanned.Name = "buttonRefeshBanned";
+            this.buttonRefeshBanned.Size = new System.Drawing.Size(126, 49);
+            this.buttonRefeshBanned.TabIndex = 3;
+            this.buttonRefeshBanned.Text = "Refesh";
+            this.buttonRefeshBanned.UseVisualStyleBackColor = true;
+            this.buttonRefeshBanned.Click += new System.EventHandler(this.ButtonRefeshData_Click);
+            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -520,7 +557,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(962, 10);
+            this.button3.Location = new System.Drawing.Point(786, 6);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(101, 32);
             this.button3.TabIndex = 16;
@@ -531,7 +568,7 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(158, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(780, 27);
+            this.textBox1.Size = new System.Drawing.Size(622, 27);
             this.textBox1.TabIndex = 15;
             // 
             // label5
@@ -544,20 +581,10 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "Tìm kiếm";
             // 
-            // ButtonRefeshData
-            // 
-            this.ButtonRefeshData.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonRefeshData.Location = new System.Drawing.Point(24, 669);
-            this.ButtonRefeshData.Name = "ButtonRefeshData";
-            this.ButtonRefeshData.Size = new System.Drawing.Size(126, 49);
-            this.ButtonRefeshData.TabIndex = 3;
-            this.ButtonRefeshData.Text = "Refesh";
-            this.ButtonRefeshData.UseVisualStyleBackColor = true;
-            // 
             // ButtonNotification
             // 
             this.ButtonNotification.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ButtonNotification.Location = new System.Drawing.Point(185, 669);
+            this.ButtonNotification.Location = new System.Drawing.Point(12, 658);
             this.ButtonNotification.Name = "ButtonNotification";
             this.ButtonNotification.Size = new System.Drawing.Size(126, 49);
             this.ButtonNotification.TabIndex = 4;
@@ -567,16 +594,16 @@
             // textBoxNonfication
             // 
             this.textBoxNonfication.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxNonfication.Location = new System.Drawing.Point(333, 680);
+            this.textBoxNonfication.Location = new System.Drawing.Point(144, 670);
             this.textBoxNonfication.Name = "textBoxNonfication";
-            this.textBoxNonfication.Size = new System.Drawing.Size(682, 27);
+            this.textBoxNonfication.Size = new System.Drawing.Size(904, 27);
             this.textBoxNonfication.TabIndex = 5;
             this.textBoxNonfication.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // buttonExitForm
             // 
             this.buttonExitForm.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonExitForm.Location = new System.Drawing.Point(1051, 670);
+            this.buttonExitForm.Location = new System.Drawing.Point(1054, 659);
             this.buttonExitForm.Name = "buttonExitForm";
             this.buttonExitForm.Size = new System.Drawing.Size(126, 49);
             this.buttonExitForm.TabIndex = 6;
@@ -592,7 +619,6 @@
             this.Controls.Add(this.buttonExitForm);
             this.Controls.Add(this.textBoxNonfication);
             this.Controls.Add(this.ButtonNotification);
-            this.Controls.Add(this.ButtonRefeshData);
             this.Controls.Add(this.view);
             this.Controls.Add(this.titleClient);
             this.MinimumSize = new System.Drawing.Size(1250, 737);
@@ -639,7 +665,7 @@
         private System.Windows.Forms.Label labelTotalEmployee;
         private System.Windows.Forms.Label LabelTotalWebBan;
         private System.Windows.Forms.Label TotalWebBanned;
-        private System.Windows.Forms.Button ButtonRefeshData;
+        private System.Windows.Forms.Button buttonRefeshBanned;
         private System.Windows.Forms.Button ButtonNotification;
         private System.Windows.Forms.TextBox textBoxNonfication;
         private System.Windows.Forms.TextBox textBoxSearch;
@@ -668,5 +694,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button buttonExitForm;
+        private System.Windows.Forms.Button buttonRefeshViPham;
+        private System.Windows.Forms.Button buttonRefeshUser;
     }
 }

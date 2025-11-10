@@ -41,11 +41,15 @@ namespace LANAuthClient
 
                     if (response.StartsWith("SUCCESS"))
                     {
+
+                        string[] parts = response.Split('|');
+                        string role = parts[1];
+                        string userCode = parts[2];
                         MessageBox.Show("Đăng nhập thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
 
                         // Mở form chính cho user
-                        MainForm mainForm = new MainForm();
+                        MainForm mainForm = new MainForm(userCode);
                         mainForm.ShowDialog();
                     }
                     else

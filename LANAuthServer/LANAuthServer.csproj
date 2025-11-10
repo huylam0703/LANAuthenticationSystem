@@ -99,7 +99,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data\BannedSiteRepository.cs" />
+    <Compile Include="Data\BannedWebRepository.cs" />
     <Compile Include="Data\DatabaseHelper.cs" />
     <Compile Include="Data\UserRepository.cs" />
     <Compile Include="Data\ViolationRepository.cs" />
@@ -139,7 +139,7 @@
     <Compile Include="Forms\registerForm.Designer.cs">
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\BannedSite.cs" />
+    <Compile Include="Models\BannedWeb.cs" />
     <Compile Include="Models\MessagePacket.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserStatus.cs" />
@@ -148,6 +148,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthService.cs" />
+    <Compile Include="Services\BannedWebService.cs" />
     <Compile Include="Services\BCryptService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\UserService.cs" />

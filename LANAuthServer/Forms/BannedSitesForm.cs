@@ -1,12 +1,7 @@
 ﻿using LANAuthServer.Forms;
+using LANAuthServer.Services;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 
@@ -14,6 +9,8 @@ namespace LANAuthServer.forms
 {
     public partial class BannedSitesForm : Form
     {
+        private readonly UserService _userService = new UserService();
+        private readonly BannedWebService _bannedWebService = new BannedWebService();
         public BannedSitesForm()
         {
             InitializeComponent();
@@ -47,7 +44,7 @@ namespace LANAuthServer.forms
 
             // Tạo cột
             dataGridView1.Columns.Add("User", "Nhân Viên");
-            dataGridView1.Columns.Add("IpAndress", "Địa chỉ Ip");
+            dataGridView1.Columns.Add("userCode", "Mã nhân viên");
             dataGridView1.Columns.Add("Website", "Website");
             dataGridView1.Columns.Add("Time", "Thời gian");
             dataGridView1.Columns.Add("Status", "Trạng thái");
@@ -62,47 +59,13 @@ namespace LANAuthServer.forms
             // Tùy chỉnh kích thước cột
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-
-            ///////////////////////////////////////
-            // Danh sach nhan vien
-
-            dataGridView2.Columns.Clear();
-
-            // Tạo cột
-            dataGridView2.Columns.Add("Employee", "Nhân Viên");
-            dataGridView2.Columns.Add("IpAndress", "Địa chỉ Ip");
-            dataGridView2.Columns.Add("Email", "Email");
-            dataGridView2.Columns.Add("Status", "Trạng thái");
-
-            // Thêm dữ liệu mẫu
-            dataGridView2.Rows.Add("lam nhat huy", "363636", "huyhocgioi12@gmail.com", "Online");
-            dataGridView2.Rows.Add("tran van phi", "PC-02", "phingu@gmail.com", "Offline");
-
-            // Căn giữa các cột
-            dataGridView2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Tùy chỉnh kích thước cột
-            dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-
+            //danh sach nhan vien
+            LoadEmployees();
 
             ///////////////////////////////////////
             // Danh sach web cấm
+            RefreshBannedWebList();
 
-            dataGridView3.Columns.Clear();
-
-            // Tạo cột
-            dataGridView3.Columns.Add("URL", "URL");
-            dataGridView3.Columns.Add("Description", "Mô tả");
-
-            // Thêm dữ liệu mẫu
-            dataGridView3.Rows.Add("facebook.com", "mạng xã hội cấm");
-            dataGridView3.Rows.Add("chatgpt.com", "lộ thông tin bảo mật");
-
-            // Căn giữa các cột
-            dataGridView3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            // Tùy chỉnh kích thước cột
-            dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
         }
 
@@ -158,6 +121,88 @@ namespace LANAuthServer.forms
         private void buttonExitForm_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        
+
+        private void LoadEmployees()
+        {
+            try
+            {
+                // Lấy danh sách người dùng từ service
+                var users = _userService.GetUsers();
+
+                // Xóa dữ liệu cũ
+                dataGridView2.Rows.Clear();
+                dataGridView2.Columns.Clear();
+
+                // Cấu trúc cột
+                dataGridView2.Columns.Add("Employee", "Nhân viên");
+                dataGridView2.Columns.Add("UserCode", "Mã nhân viên");
+                dataGridView2.Columns.Add("Email", "Email");
+                dataGridView2.Columns.Add("Status", "Trạng thái");
+
+                // Thêm dữ liệu vào bảng
+                foreach (var u in users)
+                {
+                    dataGridView2.Rows.Add(
+                        u.fullName ?? "(Chưa có tên)",
+                        u.userCode ?? "N/A",
+                        u.email ?? "Không có email",
+                        u.Status.ToString()
+                    );
+                }
+
+                // Căn giữa và tự động giãn cột
+                dataGridView2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách nhân viên: " + ex.Message);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            LoadEmployees();
+        }
+
+        private void RefreshBannedWebList()
+        {
+            try
+            {
+                // Lấy danh sách từ service
+                var bannedList = _bannedWebService.GetAllBannedWebsites();
+
+                // Xóa dữ liệu cũ
+                dataGridView3.Rows.Clear();
+                dataGridView3.Columns.Clear();
+
+                // Tạo cột
+                dataGridView3.Columns.Add("URL", "URL");
+                dataGridView3.Columns.Add("Description", "Mô tả");
+                dataGridView3.Columns.Add("CreatedAt", "Ngày tạo");
+
+                // Thêm dữ liệu
+                foreach (var item in bannedList)
+                {
+                    dataGridView3.Rows.Add(item.Url, item.Reason, item.CreatedAt.ToString("g"));
+                }
+
+                // Căn giữa và tự động giãn cột
+                dataGridView3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách website cấm: " + ex.Message);
+            }
+        }
+
+        private void ButtonRefeshData_Click(object sender, EventArgs e)
+        {
+            RefreshBannedWebList();
         }
     }
 }

@@ -29,14 +29,14 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBoxUserCode = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.textBoxAddDEmail = new System.Windows.Forms.TextBox();
             this.textBoxAddName = new System.Windows.Forms.TextBox();
             this.buttonAddInfo = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBoxUserCode = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,6 +54,23 @@
             this.groupBox1.Size = new System.Drawing.Size(412, 283);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
+            // 
+            // textBoxUserCode
+            // 
+            this.textBoxUserCode.Location = new System.Drawing.Point(24, 52);
+            this.textBoxUserCode.Name = "textBoxUserCode";
+            this.textBoxUserCode.Size = new System.Drawing.Size(361, 22);
+            this.textBoxUserCode.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(170, 22);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Nhập mã nhân viên:";
             // 
             // textBoxAddDEmail
             // 
@@ -110,23 +127,6 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Cập nhật thông tin";
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(18, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 22);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Nhập mã nhân viên:";
-            // 
-            // textBoxUserCode
-            // 
-            this.textBoxUserCode.Location = new System.Drawing.Point(24, 52);
-            this.textBoxUserCode.Name = "textBoxUserCode";
-            this.textBoxUserCode.Size = new System.Drawing.Size(361, 22);
-            this.textBoxUserCode.TabIndex = 6;
-            // 
             // UpdateInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -136,6 +136,7 @@
             this.Controls.Add(this.label4);
             this.Name = "UpdateInfo";
             this.Text = "UpdateInfo";
+            this.Load += new System.EventHandler(this.UpdateInfo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
