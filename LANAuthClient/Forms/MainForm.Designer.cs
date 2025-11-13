@@ -2,15 +2,8 @@
 {
     partial class MainForm
     {
-        /// <summary>
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,15 +15,12 @@
 
         #region Windows Form Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
             this.titleClient = new System.Windows.Forms.Label();
             this.ButtonRefesh = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.labelEmail = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.employeeCodeResult = new System.Windows.Forms.Label();
@@ -45,7 +35,6 @@
             this.ButtonMini = new System.Windows.Forms.Button();
             this.ButtonExitMain = new System.Windows.Forms.Button();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.button1 = new System.Windows.Forms.Button();
             this.ButtonRefesh.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +67,17 @@
             this.ButtonRefesh.TabStop = false;
             this.ButtonRefesh.Text = "Thông tin cá nhân:";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(580, 48);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(117, 26);
+            this.button1.TabIndex = 8;
+            this.button1.Text = "Refesh";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
@@ -96,7 +96,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(52, 20);
             this.label2.TabIndex = 6;
-            this.label2.Text = "Emai:";
+            this.label2.Text = "Email:";
             // 
             // employeeCodeResult
             // 
@@ -168,7 +168,7 @@
             // 
             this.TimeMain.AutoSize = true;
             this.TimeMain.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TimeMain.Location = new System.Drawing.Point(85, 69);
+            this.TimeMain.Location = new System.Drawing.Point(10, 69);
             this.TimeMain.Name = "TimeMain";
             this.TimeMain.Size = new System.Drawing.Size(82, 20);
             this.TimeMain.TabIndex = 3;
@@ -203,6 +203,7 @@
             this.ButtonMini.TabIndex = 3;
             this.ButtonMini.Text = "Thu nhỏ";
             this.ButtonMini.UseVisualStyleBackColor = true;
+            this.ButtonMini.Click += new System.EventHandler(this.ButtonMini_Click);
             // 
             // ButtonExitMain
             // 
@@ -213,17 +214,7 @@
             this.ButtonExitMain.TabIndex = 4;
             this.ButtonExitMain.Text = "Thoát";
             this.ButtonExitMain.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(580, 48);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(117, 26);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Refesh";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ButtonExitMain.Click += new System.EventHandler(this.ButtonExitMain_Click);
             // 
             // MainForm
             // 
@@ -244,7 +235,6 @@
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

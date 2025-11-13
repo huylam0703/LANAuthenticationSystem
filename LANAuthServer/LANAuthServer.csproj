@@ -139,6 +139,7 @@
     <Compile Include="Forms\registerForm.Designer.cs">
       <DependentUpon>registerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\ConsoleHelper.cs" />
     <Compile Include="Models\BannedWeb.cs" />
     <Compile Include="Models\MessagePacket.cs" />
     <Compile Include="Models\User.cs" />
