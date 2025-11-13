@@ -157,10 +157,11 @@ namespace LANAuthServer.Data
                         {
                             return new User
                             {
-                                userCode = reader["userCode"].ToString(),
-                                fullName = reader["fullName"].ToString(),
+                                UserID = reader["userID"] != DBNull.Value ? Convert.ToInt32(reader["userID"]) : 0,
+                                userCode = reader["userCode"]?.ToString() ?? "",
+                                fullName = reader["fullName"]?.ToString() ?? "",
                                 email = reader["email"] == DBNull.Value ? null : reader["email"].ToString(),
-                                role = reader["role"].ToString()
+                                role = reader["role"]?.ToString() ?? ""
                             };
                         }
                     }
@@ -168,6 +169,7 @@ namespace LANAuthServer.Data
             }
             return null;
         }
+
 
 
     }
