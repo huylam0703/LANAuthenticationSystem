@@ -1,4 +1,6 @@
 ﻿
+using System;
+
 namespace LANAuthServer.Models
 {
     internal class User
@@ -11,7 +13,18 @@ namespace LANAuthServer.Models
         public string fullName { get; set; } = "";
         public string email { get; set; } = "";
         public string role { get; set; } = "";
-        public UserStatus Status { get; set; } 
+        public UserStatus Status { get; set; }
+
+        public DateTime? LastHeartbeat { get; set; }
+
+        public bool IsOnline()
+        {
+            if (!LastHeartbeat.HasValue)
+                return false;
+
+            // Consider user online if last heartbeat was within 60 seconds
+            return (DateTime.Now - LastHeartbeat.Value).TotalSeconds < 60;
+        }
 
     }
 }

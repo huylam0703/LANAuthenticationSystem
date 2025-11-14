@@ -77,9 +77,6 @@ namespace LANAuthServer.forms
                     Program.UdpReceiverInstance.OnHeartbeatReceived += OnHeartbeatReceived;
 
                     Console.WriteLine("✓ UDP Events registered successfully");
-
-                    // Test event
-                    //Console.WriteLine($"  Event subscribers count: {Program.UdpReceiverInstance.OnViolationReceived?.GetInvocationList().Length ?? 0}");
                 }
                 else
                 {
@@ -142,8 +139,10 @@ namespace LANAuthServer.forms
                 return;
             }
 
-            // Có thể cập nhật status user ở đây
-            Console.WriteLine($"Heartbeat: {userCode}");
+            // Refresh dashboard và employee list để cập nhật số liệu online
+            LoadDashboardData();
+
+            Console.WriteLine($"Heartbeat received from {userCode} - Dashboard updated");
         }
 
         private void ShowNotification(string message)
@@ -204,7 +203,7 @@ namespace LANAuthServer.forms
                 // Load thống kê
                 var users = _userService.GetUsers();
                 int totalUsers = users.Count;
-                int onlineUsers = users.Count(u => u.Status == Models.UserStatus.online);
+                int onlineUsers = users.Count(u => u.IsOnline());
                 int todayViolations = _violationRepo.GetViolationCountToday();
                 int totalBannedWebs = _bannedWebService.GetAllBannedWebsites().Count;
 
@@ -354,32 +353,54 @@ namespace LANAuthServer.forms
                     dataGridView2.Columns.Add("UserCode", "Mã nhân viên");
                     dataGridView2.Columns.Add("Email", "Email");
                     dataGridView2.Columns.Add("Status", "Trạng thái");
+
+                    // Set column widths
+                    dataGridView2.Columns["FullName"].Width = 200;
+                    dataGridView2.Columns["UserCode"].Width = 150;
+                    dataGridView2.Columns["Email"].Width = 200;
+                    dataGridView2.Columns["Status"].Width = 120;
                 }
 
                 foreach (var u in users)
                 {
+                    bool isOnline = u.IsOnline();
+                    string statusText = isOnline ? "Online" : "Offline";
+
                     int rowIndex = dataGridView2.Rows.Add(
                         u.fullName ?? "(Chưa có tên)",
                         u.userCode ?? "N/A",
                         u.email ?? "Không có email",
-                        u.Status.ToString()
+                        statusText
                     );
 
-                    // Highlight online users
-                    if (u.Status == Models.UserStatus.online)
+                    // Highlight online users with green
+                    if (isOnline)
                     {
                         dataGridView2.Rows[rowIndex].DefaultCellStyle.BackColor =
                             System.Drawing.Color.LightGreen;
+                        dataGridView2.Rows[rowIndex].DefaultCellStyle.ForeColor =
+                            System.Drawing.Color.DarkGreen;
+                        dataGridView2.Rows[rowIndex].DefaultCellStyle.Font =
+                            new System.Drawing.Font(dataGridView2.Font, System.Drawing.FontStyle.Bold);
+                    }
+                    else
+                    {
+                        dataGridView2.Rows[rowIndex].DefaultCellStyle.ForeColor =
+                            System.Drawing.Color.Gray;
                     }
                 }
 
                 if (LabelTotalEmployeeList != null)
                 {
-                    LabelTotalEmployeeList.Text = $"{users.Count} nhân viên";
+                    int onlineCount = users.Count(u => u.IsOnline());
+                    LabelTotalEmployeeList.Text = $"{users.Count} nhân viên ({onlineCount} online)";
                 }
 
                 dataGridView2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+                dataGridView2.AllowUserToAddRows = false;
+                dataGridView2.ReadOnly = true;
+                dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
             catch (Exception ex)
             {

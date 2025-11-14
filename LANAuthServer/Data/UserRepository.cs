@@ -1,18 +1,13 @@
-﻿
-using LANAuthServer.Models;
+﻿using LANAuthServer.Models;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace LANAuthServer.Data
 {
     internal class UserRepository
     {
-
-        // create user
+        // Create user
         public bool AddUser(string username, string password, string role, string userCode)
         {
             string query = "INSERT INTO users (username, password, role, userCode) VALUES" +
@@ -33,13 +28,11 @@ namespace LANAuthServer.Data
             }
         }
 
-
-        //getAllUser
-
+        // Get all users with online status
         public List<User> GetAllUsers()
         {
             var users = new List<User>();
-            string query = "SELECT userCode, fullName, email, status FROM users";
+            string query = "SELECT userCode, fullName, email, lastHeartbeat FROM users WHERE role = 'user'";
 
             using (var conn = DatabaseHelper.GetConnection())
             {
@@ -49,13 +42,20 @@ namespace LANAuthServer.Data
                 {
                     while (reader.Read())
                     {
-                        users.Add(new User
+                        var user = new User
                         {
                             userCode = reader["userCode"] as string,
                             fullName = reader["fullName"] as string,
                             email = reader["email"] == DBNull.Value ? null : reader["email"].ToString(),
-                            Status = UserStatus.offline
-                        });
+                            LastHeartbeat = reader["lastHeartbeat"] == DBNull.Value
+                                ? (DateTime?)null
+                                : reader.GetDateTime("lastHeartbeat")
+                        };
+
+                        // Set status based on last heartbeat
+                        user.Status = user.IsOnline() ? UserStatus.online : UserStatus.offline;
+
+                        users.Add(user);
                     }
                 }
             }
@@ -63,11 +63,45 @@ namespace LANAuthServer.Data
             return users;
         }
 
+        // Update last heartbeat timestamp
+        public bool UpdateLastHeartbeat(string userCode)
+        {
+            string query = "UPDATE users SET lastHeartbeat = @lastHeartbeat WHERE userCode = @userCode";
 
-        // Cập nhật thông tin sau khi đăng ký
+            using (var connect = DatabaseHelper.GetConnection())
+            {
+                connect.Open();
+                using (var cmd = new MySqlCommand(query, connect))
+                {
+                    cmd.Parameters.AddWithValue("@lastHeartbeat", DateTime.Now);
+                    cmd.Parameters.AddWithValue("@userCode", userCode);
+
+                    return cmd.ExecuteNonQuery() > 0;
+                }
+            }
+        }
+
+        // Get count of online users
+        public int GetOnlineUserCount()
+        {
+            string query = @"SELECT COUNT(*) FROM users 
+                            WHERE role = 'user' 
+                            AND lastHeartbeat IS NOT NULL 
+                            AND TIMESTAMPDIFF(SECOND, lastHeartbeat, NOW()) < 60";
+
+            using (var conn = DatabaseHelper.GetConnection())
+            {
+                conn.Open();
+                using (var cmd = new MySqlCommand(query, conn))
+                {
+                    return Convert.ToInt32(cmd.ExecuteScalar());
+                }
+            }
+        }
+
+        // Update user info after registration
         public bool UpdateUserInfo(string userCode, string fullName, string email)
         {
-            // Xây dựng câu SQL động tùy theo dữ liệu được truyền vào
             List<string> updates = new List<string>();
             if (!string.IsNullOrWhiteSpace(fullName))
                 updates.Add("fullName = @fullName");
@@ -75,7 +109,7 @@ namespace LANAuthServer.Data
                 updates.Add("email = @Email");
 
             if (updates.Count == 0)
-                return false; // Không có gì để cập nhật
+                return false;
 
             string query = $"UPDATE users SET {string.Join(", ", updates)} WHERE userCode = @userCode";
 
@@ -95,7 +129,10 @@ namespace LANAuthServer.Data
                 }
             }
         }
-        public bool DeleteUserInfo(string userCode) {
+
+        // Delete user
+        public bool DeleteUserInfo(string userCode)
+        {
             string query = "DELETE FROM users WHERE userCode = @userCode";
 
             using (var connect = DatabaseHelper.GetConnection())
@@ -108,10 +145,9 @@ namespace LANAuthServer.Data
                     return cmd.ExecuteNonQuery() > 0;
                 }
             }
-
         }
 
-
+        // Get user by username
         public User GetUserByUsername(string username)
         {
             string query = "SELECT * FROM users WHERE username = @username";
@@ -133,7 +169,10 @@ namespace LANAuthServer.Data
                                 role = reader.GetString("role"),
                                 userCode = reader["userCode"]?.ToString() ?? "",
                                 fullName = reader["fullName"]?.ToString() ?? "",
-                                email = reader["email"]?.ToString() ?? ""
+                                email = reader["email"]?.ToString() ?? "",
+                                LastHeartbeat = reader["lastHeartbeat"] == DBNull.Value
+                                    ? (DateTime?)null
+                                    : reader.GetDateTime("lastHeartbeat")
                             };
                         }
                     }
@@ -142,6 +181,7 @@ namespace LANAuthServer.Data
             return null;
         }
 
+        // Get user by code
         public User GetUserByCode(string userCode)
         {
             using (var conn = DatabaseHelper.GetConnection())
@@ -161,7 +201,10 @@ namespace LANAuthServer.Data
                                 userCode = reader["userCode"]?.ToString() ?? "",
                                 fullName = reader["fullName"]?.ToString() ?? "",
                                 email = reader["email"] == DBNull.Value ? null : reader["email"].ToString(),
-                                role = reader["role"]?.ToString() ?? ""
+                                role = reader["role"]?.ToString() ?? "",
+                                LastHeartbeat = reader["lastHeartbeat"] == DBNull.Value
+                                    ? (DateTime?)null
+                                    : reader.GetDateTime("lastHeartbeat")
                             };
                         }
                     }
@@ -169,11 +212,5 @@ namespace LANAuthServer.Data
             }
             return null;
         }
-
-
-
     }
-
 }
-
-

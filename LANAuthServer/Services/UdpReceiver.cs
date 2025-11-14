@@ -193,6 +193,25 @@ namespace LANAuthServer.Services
             {
                 string userCode = parts[1];
                 Console.WriteLine($"Heartbeat from: {userCode}");
+
+                // Update last heartbeat in database
+                try
+                {
+                    bool updated = _userRepo.UpdateLastHeartbeat(userCode);
+                    if (updated)
+                    {
+                        Console.WriteLine($"✓ Updated heartbeat for {userCode}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"✗ Failed to update heartbeat for {userCode}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"✗ Error updating heartbeat: {ex.Message}");
+                }
+
                 OnHeartbeatReceived?.Invoke(userCode);
             }
         }
