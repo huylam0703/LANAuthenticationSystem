@@ -1,4 +1,5 @@
-﻿using LANAuthClient.Forms;
+﻿using LANAuthClient.Data;
+using LANAuthClient.Forms;
 using System;
 using System.Net.Sockets;
 using System.Text;
@@ -28,7 +29,10 @@ namespace LANAuthClient
 
             try
             {
-                using (TcpClient client = new TcpClient("192.168.100.190", 5555))
+                var configManager = new ConfigManager();
+                var (serverIp, serverPort) = configManager.LoadServerAddress();
+
+                using (TcpClient client = new TcpClient(serverIp, serverPort))
                 using (NetworkStream stream = client.GetStream())
                 {
                     string message = $"LOGIN|{username}|{password}";

@@ -1,4 +1,5 @@
-﻿using LANAuthClient.Services;
+﻿using LANAuthClient.Data;
+using LANAuthClient.Services;
 using System;
 using System.Net.Sockets;
 using System.Text;
@@ -14,17 +15,20 @@ namespace LANAuthClient.Forms
         private UdpAlertSender _alertSender;
         private Timer _heartbeatTimer;
         private TcpClientService _tcpService;
+        private ConfigManager _configManager;
 
         public MainForm(string code)
         {
             InitializeComponent();
 
             userCode = code;
+            _configManager = new ConfigManager();
+            var (serverIp, serverPort) = _configManager.LoadServerAddress();
 
             // Khởi tạo các service
             _monitorService = new MonitorService();
-            _alertSender = new UdpAlertSender();
-            _tcpService = new TcpClientService();
+            _alertSender = new UdpAlertSender(serverIp, 5556);
+            _tcpService = new TcpClientService(serverIp, serverPort);
 
             // Đăng ký sự kiện giám sát
             _monitorService.OnUrlDetected += OnUrlDetected;

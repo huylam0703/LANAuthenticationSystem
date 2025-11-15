@@ -58,7 +58,7 @@ namespace LANAuthClient.Data
             catch { }
 
             // Giá trị mặc định
-            return ("127.0.0.1", 5555);
+            return ("192.168.100.190", 5555);
         }
 
         public void SaveUserPreferences(string userCode, bool autoStart, bool minimizeToTray)
