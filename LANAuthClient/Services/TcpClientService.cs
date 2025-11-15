@@ -9,7 +9,7 @@ namespace LANAuthClient.Services
         private readonly string _serverIp;
         private readonly int _port;
 
-        public TcpClientService(string serverIp = "127.0.0.1", int port = 5555)
+        public TcpClientService(string serverIp = "192.168.100.190", int port = 5555)
         {
             _serverIp = serverIp;
             _port = port;

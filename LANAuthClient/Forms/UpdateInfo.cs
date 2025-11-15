@@ -24,7 +24,7 @@ namespace LANAuthClient.Forms
                 // tạo nội dung gửi sang server (dạng JSON đơn giản)
                 string message = $"UPDATE_INFO|{userId}|{fullName}|{email}";
 
-                using (TcpClient client = new TcpClient("127.0.0.1", 5555))
+                using (TcpClient client = new TcpClient("192.168.100.190", 5555))
                 {
                     NetworkStream stream = client.GetStream();
                     byte[] data = Encoding.UTF8.GetBytes(message);

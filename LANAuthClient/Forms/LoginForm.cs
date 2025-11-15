@@ -28,7 +28,7 @@ namespace LANAuthClient
 
             try
             {
-                using (TcpClient client = new TcpClient("127.0.0.1", 5555))
+                using (TcpClient client = new TcpClient("192.168.100.190", 5555))
                 using (NetworkStream stream = client.GetStream())
                 {
                     string message = $"LOGIN|{username}|{password}";

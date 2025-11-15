@@ -10,7 +10,7 @@ namespace LANAuthClient.Services
         private readonly UdpClient _udpClient;
         private readonly IPEndPoint _serverEndPoint;
 
-        public UdpAlertSender(string serverIp = "127.0.0.1", int port = 5556)
+        public UdpAlertSender(string serverIp = "192.168.100.190", int port = 5556)
         {
             _udpClient = new UdpClient();
             _serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), port);

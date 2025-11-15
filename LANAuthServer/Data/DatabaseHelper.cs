@@ -6,12 +6,14 @@ namespace LANAuthServer.Data
     internal class DatabaseHelper
     {
         private static string connectionString =
-            "server=localhost;" +
-            "port=3306;" +
-            "user=root;" +
-            "password=root;" +
-            "database=lanathentication;" +
-            "CharSet=utf8mb4;";
+    "server=192.168.100.190;" +
+    "port=3306;" +
+    "user=admin;" +
+    "password=123456;" +
+    "database=lanathentication;" +
+    "SslMode=Preferred;" +
+    "CharSet=utf8mb4;";
+
 
         /// <summary>
         /// Lấy connection đến MySQL database
@@ -79,10 +81,17 @@ namespace LANAuthServer.Data
                     Console.WriteLine("=================================\n");
                 }
             }
-            catch (Exception ex)
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"✗ Error verifying tables: {ex.Message}");
+
+            //}
+            catch (MySqlException ex)
             {
-                Console.WriteLine($"✗ Error verifying tables: {ex.Message}");
+                Console.WriteLine($"MYSQL ERROR NUMBER   : {ex.Number}");
+                Console.WriteLine($"MYSQL ERROR MESSAGE  : {ex.Message}");
             }
+
         }
     }
 }
