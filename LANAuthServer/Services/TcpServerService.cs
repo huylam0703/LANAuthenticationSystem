@@ -23,6 +23,9 @@ namespace LANAuthServer.Services
             _bannedRepo = new BannedWebRepository();
         }
 
+        /// <summary>
+        /// Bắt đầu lắng nghe kết nối TCP
+        /// </summary>
         public void Start()
         {
             if (_isRunning) return;
@@ -36,17 +39,20 @@ namespace LANAuthServer.Services
                 IsBackground = true
             };
             _listenerThread.Start();
-
-            Console.WriteLine($"TCP Server started on port {_port}");
         }
 
+        /// <summary>
+        /// Dừng lắng nghe TCP
+        /// </summary>
         public void Stop()
         {
             _isRunning = false;
             _listener?.Stop();
-            Console.WriteLine("TCP Server stopped");
         }
 
+        /// <summary>
+        /// Vòng lặp lắng nghe client mới
+        /// </summary>
         private void ListenerLoop()
         {
             while (_isRunning)
@@ -64,13 +70,16 @@ namespace LANAuthServer.Services
                 {
                     break;
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("TCP Server error: " + ex.Message);
+                    // Bỏ qua lỗi và tiếp tục lắng nghe
                 }
             }
         }
 
+        /// <summary>
+        /// Xử lý request từ client
+        /// </summary>
         private void HandleClient(TcpClient client)
         {
             try
@@ -83,7 +92,7 @@ namespace LANAuthServer.Services
 
                     OnClientMessage?.Invoke(message);
 
-                    // Xử lý CHECK_URL request
+                    // Xử lý request kiểm tra URL
                     if (message.StartsWith("CHECK_URL|"))
                     {
                         string[] parts = message.Split('|');
@@ -98,9 +107,9 @@ namespace LANAuthServer.Services
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error handling client: " + ex.Message);
+                // Bỏ qua lỗi xử lý client
             }
             finally
             {
@@ -108,6 +117,9 @@ namespace LANAuthServer.Services
             }
         }
 
+        /// <summary>
+        /// Kiểm tra URL có nằm trong danh sách cấm không
+        /// </summary>
         private bool CheckIfUrlBanned(string url)
         {
             try
@@ -122,14 +134,17 @@ namespace LANAuthServer.Services
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error checking banned URL: " + ex.Message);
+                // Bỏ qua lỗi kiểm tra
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Gửi response về client
+        /// </summary>
         private void SendResponse(NetworkStream stream, string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);

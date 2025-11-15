@@ -19,27 +19,26 @@ namespace LANAuthClient.Forms
         {
             InitializeComponent();
 
-            // Lưu userCode từ login
             userCode = code;
 
-            Console.WriteLine($"\n>>> MainForm Constructor:");
-            Console.WriteLine($"    Initial UserCode: {userCode}");
-
-            // Khởi tạo services
+            // Khởi tạo các service
             _monitorService = new MonitorService();
             _alertSender = new UdpAlertSender();
             _tcpService = new TcpClientService();
 
-            // Setup monitoring events
+            // Đăng ký sự kiện giám sát
             _monitorService.OnUrlDetected += OnUrlDetected;
             _monitorService.OnMonitoringStatusChanged += OnMonitoringChanged;
 
-            // Setup heartbeat timer
+            // Thiết lập timer heartbeat - gửi tín hiệu mỗi 30 giây
             _heartbeatTimer = new Timer();
-            _heartbeatTimer.Interval = 30000; // 30 giây
+            _heartbeatTimer.Interval = 30000;
             _heartbeatTimer.Tick += SendHeartbeat;
         }
 
+        /// <summary>
+        /// Tải thông tin người dùng từ server
+        /// </summary>
         private void LoadUserInfo()
         {
             try
@@ -62,19 +61,12 @@ namespace LANAuthClient.Forms
                         string userCodeFromServer = parts[2];
                         string email = parts[3];
 
-                        // CẬP NHẬT: Đảm bảo userCode và fullName được set đúng
                         userCode = userCodeFromServer;
 
-                        // Cập nhật UI
+                        // Cập nhật giao diện
                         nameResult.Text = fullName ?? "Chưa cập nhật";
                         employeeCodeResult.Text = userCodeFromServer;
                         labelEmail.Text = email ?? "Chưa có email";
-
-                        // LOG để debug
-                        Console.WriteLine($"✓ User info loaded:");
-                        Console.WriteLine($"  - UserCode: {userCode}");
-                        Console.WriteLine($"  - FullName: {fullName}");
-                        Console.WriteLine($"  - Email: {email}");
                     }
                     else
                     {
@@ -94,45 +86,37 @@ namespace LANAuthClient.Forms
         {
             LoadUserInfo();
 
-            // DEBUG: Log userCode để biết client đang dùng code nào
-            Console.WriteLine("===========================================");
-            Console.WriteLine($">>> CLIENT INFO:");
-            Console.WriteLine($"    UserCode: {userCode}");
-            Console.WriteLine($"    FullName: {fullName ?? "(loading...)"}");
-            Console.WriteLine("===========================================\n");
-
-            // Bắt đầu giám sát
+            // Bắt đầu giám sát và heartbeat
             _monitorService.StartMonitoring();
-
-            // Bắt đầu gửi heartbeat
             _heartbeatTimer.Start();
 
-            // Cập nhật trạng thái
             UpdateMonitoringStatus();
             UpdateTime();
 
-            // Timer cập nhật thời gian
+            // Timer cập nhật thời gian mỗi giây
             Timer timeTimer = new Timer();
             timeTimer.Interval = 1000;
             timeTimer.Tick += (s, ev) => UpdateTime();
             timeTimer.Start();
         }
 
+        /// <summary>
+        /// Xử lý khi phát hiện URL mới
+        /// </summary>
         private void OnUrlDetected(string url)
         {
-            // Update UI thread-safe
             if (InvokeRequired)
             {
                 Invoke(new Action<string>(OnUrlDetected), url);
                 return;
             }
 
-            Console.WriteLine($"Detected URL: {url}");
-
-            // Kiểm tra với server xem URL có bị cấm không
             CheckBannedUrl(url);
         }
 
+        /// <summary>
+        /// Kiểm tra URL có bị cấm không và gửi cảnh báo nếu cần
+        /// </summary>
         private void CheckBannedUrl(string url)
         {
             try
@@ -141,20 +125,13 @@ namespace LANAuthClient.Forms
 
                 if (isBanned)
                 {
-                    // QUAN TRỌNG: Đảm bảo dùng đúng userCode và fullName của user đang login
                     string currentUserCode = userCode;
                     string currentFullName = fullName ?? "Unknown User";
 
-                    Console.WriteLine($"\n!!! VIOLATION DETECTED !!!");
-                    Console.WriteLine($"  User: {currentFullName}");
-                    Console.WriteLine($"  Code: {currentUserCode}");
-                    Console.WriteLine($"  URL: {url}");
-                    Console.WriteLine($"  Time: {DateTime.Now:HH:mm:ss}");
-
-                    // Gửi cảnh báo vi phạm với thông tin CHÍNH XÁC
+                    // Gửi cảnh báo vi phạm đến server
                     _alertSender.SendViolationAlert(currentUserCode, currentFullName, url);
 
-                    // Hiển thị cảnh báo cho user
+                    // Hiển thị cảnh báo cho người dùng
                     MessageBox.Show(
                         $"Cảnh báo: Bạn đang truy cập website bị cấm!\n\n" +
                         $"Website: {url}\n" +
@@ -166,9 +143,9 @@ namespace LANAuthClient.Forms
                     );
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error checking URL: " + ex.Message);
+                // Bỏ qua lỗi kiểm tra
             }
         }
 
@@ -183,6 +160,9 @@ namespace LANAuthClient.Forms
             UpdateMonitoringStatus();
         }
 
+        /// <summary>
+        /// Cập nhật hiển thị trạng thái giám sát
+        /// </summary>
         private void UpdateMonitoringStatus()
         {
             if (_monitorService != null && _monitorService.IsMonitoring)
@@ -197,6 +177,9 @@ namespace LANAuthClient.Forms
             }
         }
 
+        /// <summary>
+        /// Cập nhật hiển thị thời gian
+        /// </summary>
         private void UpdateTime()
         {
             if (TimeMain != null)
@@ -205,20 +188,21 @@ namespace LANAuthClient.Forms
             }
         }
 
+        /// <summary>
+        /// Gửi tín hiệu heartbeat đến server
+        /// </summary>
         private void SendHeartbeat(object sender, EventArgs e)
         {
             try
             {
-                // Đảm bảo dùng userCode hiện tại
                 if (!string.IsNullOrEmpty(userCode))
                 {
                     _alertSender.SendHeartbeat(userCode);
-                    Console.WriteLine($"[Heartbeat] Sent for user: {userCode}");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error sending heartbeat: " + ex.Message);
+                // Bỏ qua lỗi gửi heartbeat
             }
         }
 
@@ -261,11 +245,13 @@ namespace LANAuthClient.Forms
             }
         }
 
+        /// <summary>
+        /// Dọn dẹp tài nguyên khi đóng form
+        /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            // Cleanup
             _monitorService?.StopMonitoring();
             _heartbeatTimer?.Stop();
             _alertSender?.Dispose();

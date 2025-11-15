@@ -16,6 +16,12 @@ namespace LANAuthClient.Services
             _serverEndPoint = new IPEndPoint(IPAddress.Parse(serverIp), port);
         }
 
+        /// <summary>
+        /// Gửi cảnh báo vi phạm đến server qua UDP
+        /// </summary>
+        /// <param name="userCode">Mã nhân viên</param>
+        /// <param name="fullName">Họ tên nhân viên</param>
+        /// <param name="url">URL vi phạm</param>
         public void SendViolationAlert(string userCode, string fullName, string url)
         {
             try
@@ -24,15 +30,17 @@ namespace LANAuthClient.Services
                 byte[] data = Encoding.UTF8.GetBytes(message);
 
                 _udpClient.Send(data, data.Length, _serverEndPoint);
-                Console.WriteLine($"✓ Sent violation alert to {_serverEndPoint.Address}:{_serverEndPoint.Port}");
-                Console.WriteLine($"  Message: {message}");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("✗ Error sending alert: " + ex.Message);
+                // Bỏ qua lỗi gửi
             }
         }
 
+        /// <summary>
+        /// Gửi tín hiệu heartbeat đến server để cập nhật trạng thái online
+        /// </summary>
+        /// <param name="userCode">Mã nhân viên</param>
         public void SendHeartbeat(string userCode)
         {
             try
@@ -42,9 +50,9 @@ namespace LANAuthClient.Services
 
                 _udpClient.Send(data, data.Length, _serverEndPoint);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error sending heartbeat: " + ex.Message);
+                // Bỏ qua lỗi gửi
             }
         }
 

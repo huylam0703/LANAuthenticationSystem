@@ -28,6 +28,9 @@ namespace LANAuthClient.Services
             _alertSender = new UdpAlertSender();
         }
 
+        /// <summary>
+        /// Bắt đầu giám sát hoạt động trình duyệt của người dùng
+        /// </summary>
         public void StartMonitoring()
         {
             if (_isMonitoring) return;
@@ -42,12 +45,19 @@ namespace LANAuthClient.Services
             OnMonitoringStatusChanged?.Invoke(true);
         }
 
+        /// <summary>
+        /// Dừng giám sát
+        /// </summary>
         public void StopMonitoring()
         {
             _isMonitoring = false;
             OnMonitoringStatusChanged?.Invoke(false);
         }
 
+        /// <summary>
+        /// Vòng lặp chính để giám sát cửa sổ đang hoạt động
+        /// Kiểm tra mỗi 2 giây
+        /// </summary>
         private void MonitorLoop()
         {
             while (_isMonitoring)
@@ -61,19 +71,22 @@ namespace LANAuthClient.Services
                         _currentUrl = detectedUrl;
                         OnUrlDetected?.Invoke(detectedUrl);
 
-                        // Kiểm tra với server xem URL có bị cấm không
                         CheckUrlWithServer(detectedUrl);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine("Monitor error: " + ex.Message);
+                    // Bỏ qua lỗi và tiếp tục giám sát
                 }
 
-                Thread.Sleep(2000); // Kiểm tra mỗi 2 giây
+                Thread.Sleep(2000);
             }
         }
 
+        /// <summary>
+        /// Lấy URL từ tiêu đề cửa sổ trình duyệt đang hoạt động
+        /// </summary>
+        /// <returns>URL hoặc tên miền được phát hiện</returns>
         private string GetActiveWindowUrl()
         {
             try
@@ -84,12 +97,11 @@ namespace LANAuthClient.Services
 
                 string title = windowTitle.ToString();
 
-                // Phát hiện browser và extract URL từ title
+                // Phát hiện các trình duyệt phổ biến
                 if (title.Contains("- Google Chrome") ||
                     title.Contains("- Mozilla Firefox") ||
                     title.Contains("- Microsoft Edge"))
                 {
-                    // Lấy phần trước dấu "-" (thường là title trang web)
                     string[] parts = title.Split(new[] { " - " }, StringSplitOptions.None);
                     if (parts.Length > 0)
                     {
@@ -102,9 +114,11 @@ namespace LANAuthClient.Services
             return null;
         }
 
+        /// <summary>
+        /// Trích xuất tên miền từ tiêu đề trang web
+        /// </summary>
         private string ExtractDomain(string text)
         {
-            // Đơn giản hóa - tìm các domain phổ biến
             string lowerText = text.ToLower();
 
             string[] commonSites = {
@@ -123,14 +137,13 @@ namespace LANAuthClient.Services
             return text;
         }
 
+        /// <summary>
+        /// Kiểm tra URL với server (placeholder)
+        /// </summary>
         private void CheckUrlWithServer(string url)
         {
-            // Gửi URL lên server để kiểm tra
-            // Server sẽ phản hồi nếu URL bị cấm
             Task.Run(() => {
-                // TODO: Implement server check
-                // Tạm thời log ra
-                Console.WriteLine($"Checking URL: {url}");
+                // Placeholder cho kiểm tra với server
             });
         }
 

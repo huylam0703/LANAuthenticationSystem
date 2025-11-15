@@ -7,6 +7,13 @@ namespace LANAuthServer.Data
 {
     internal class ViolationRepository
     {
+        /// <summary>
+        /// Thêm vi phạm mới vào database
+        /// </summary>
+        /// <param name="userId">ID người dùng vi phạm</param>
+        /// <param name="fullName">Tên người vi phạm</param>
+        /// <param name="url">URL vi phạm</param>
+        /// <returns>True nếu thêm thành công</returns>
         public bool AddViolation(int userId, string fullName, string url)
         {
             string query = @"INSERT INTO violations (userID, fullName, url, violationTime, status) 
@@ -27,19 +34,11 @@ namespace LANAuthServer.Data
                     cmd.Parameters.AddWithValue("@status", "pending");
 
                     int result = cmd.ExecuteNonQuery();
-                    Console.WriteLine($"  Database INSERT result: {result} row(s) affected");
                     return result > 0;
                 }
             }
-            catch (MySqlException ex)
+            catch (Exception)
             {
-                Console.WriteLine($"  MySQL error ({ex.Number}): {ex.Message}");
-                return false;
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"  Database error: {ex.Message}");
-                Console.WriteLine($"  Stack: {ex.StackTrace}");
                 return false;
             }
             finally
@@ -51,6 +50,9 @@ namespace LANAuthServer.Data
             }
         }
 
+        /// <summary>
+        /// Lấy tất cả vi phạm từ database
+        /// </summary>
         public List<Violation> GetAllViolations()
         {
             var violations = new List<Violation>();
@@ -83,6 +85,9 @@ namespace LANAuthServer.Data
             return violations;
         }
 
+        /// <summary>
+        /// Lấy vi phạm của một người dùng cụ thể
+        /// </summary>
         public List<Violation> GetViolationsByUser(int userId)
         {
             var violations = new List<Violation>();
@@ -120,6 +125,9 @@ namespace LANAuthServer.Data
             return violations;
         }
 
+        /// <summary>
+        /// Đếm số vi phạm trong ngày hôm nay
+        /// </summary>
         public int GetViolationCountToday()
         {
             string query = @"SELECT COUNT(*) FROM violations 
@@ -135,6 +143,9 @@ namespace LANAuthServer.Data
             }
         }
 
+        /// <summary>
+        /// Cập nhật trạng thái vi phạm
+        /// </summary>
         public bool UpdateViolationStatus(int violationId, string status)
         {
             string query = "UPDATE violations SET status = @status WHERE violationID = @violationID";
@@ -152,6 +163,9 @@ namespace LANAuthServer.Data
             }
         }
 
+        /// <summary>
+        /// Xóa vi phạm khỏi database
+        /// </summary>
         public bool DeleteViolation(int violationId)
         {
             string query = "DELETE FROM violations WHERE violationID = @violationID";

@@ -7,7 +7,9 @@ namespace LANAuthServer.Data
 {
     internal class UserRepository
     {
-        // Create user
+        /// <summary>
+        /// Thêm người dùng mới vào database
+        /// </summary>
         public bool AddUser(string username, string password, string role, string userCode)
         {
             string query = "INSERT INTO users (username, password, role, userCode) VALUES" +
@@ -28,7 +30,10 @@ namespace LANAuthServer.Data
             }
         }
 
-        // Get all users with online status
+        /// <summary>
+        /// Lấy danh sách tất cả người dùng có vai trò 'user'
+        /// Bao gồm cả trạng thái online/offline
+        /// </summary>
         public List<User> GetAllUsers()
         {
             var users = new List<User>();
@@ -52,7 +57,7 @@ namespace LANAuthServer.Data
                                 : reader.GetDateTime("lastHeartbeat")
                         };
 
-                        // Set status based on last heartbeat
+                        // Xác định trạng thái online/offline
                         user.Status = user.IsOnline() ? UserStatus.online : UserStatus.offline;
 
                         users.Add(user);
@@ -63,7 +68,10 @@ namespace LANAuthServer.Data
             return users;
         }
 
-        // Update last heartbeat timestamp
+        /// <summary>
+        /// Cập nhật thời gian heartbeat gần nhất của người dùng
+        /// Dùng để theo dõi trạng thái online
+        /// </summary>
         public bool UpdateLastHeartbeat(string userCode)
         {
             string query = "UPDATE users SET lastHeartbeat = @lastHeartbeat WHERE userCode = @userCode";
@@ -81,7 +89,9 @@ namespace LANAuthServer.Data
             }
         }
 
-        // Get count of online users
+        /// <summary>
+        /// Đếm số người dùng đang online
+        /// </summary>
         public int GetOnlineUserCount()
         {
             string query = @"SELECT COUNT(*) FROM users 
@@ -99,7 +109,9 @@ namespace LANAuthServer.Data
             }
         }
 
-        // Update user info after registration
+        /// <summary>
+        /// Cập nhật thông tin người dùng (họ tên, email)
+        /// </summary>
         public bool UpdateUserInfo(string userCode, string fullName, string email)
         {
             List<string> updates = new List<string>();
@@ -130,7 +142,9 @@ namespace LANAuthServer.Data
             }
         }
 
-        // Delete user
+        /// <summary>
+        /// Xóa người dùng khỏi database
+        /// </summary>
         public bool DeleteUserInfo(string userCode)
         {
             string query = "DELETE FROM users WHERE userCode = @userCode";
@@ -147,7 +161,9 @@ namespace LANAuthServer.Data
             }
         }
 
-        // Get user by username
+        /// <summary>
+        /// Lấy thông tin người dùng theo username
+        /// </summary>
         public User GetUserByUsername(string username)
         {
             string query = "SELECT * FROM users WHERE username = @username";
@@ -181,7 +197,9 @@ namespace LANAuthServer.Data
             return null;
         }
 
-        // Get user by code
+        /// <summary>
+        /// Lấy thông tin người dùng theo mã nhân viên
+        /// </summary>
         public User GetUserByCode(string userCode)
         {
             using (var conn = DatabaseHelper.GetConnection())

@@ -1,8 +1,5 @@
 ﻿using LANAuthServer.Data;
-using LANAuthServer.Models;
-using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
 
 namespace LANAuthServer.Services
 {
@@ -11,16 +8,20 @@ namespace LANAuthServer.Services
         private readonly UserRepository _userRepo = new UserRepository();
         private readonly BCryptService _bcryptService = new BCryptService();
 
+        /// <summary>
+        /// Đảm bảo tài khoản admin tồn tại trong database
+        /// Tạo tài khoản mặc định nếu chưa có
+        /// Username: admin, Password: admin
+        /// </summary>
         public void EnsureAdminAccount()
         {
             string adminUsername = "admin";
-            string adminPassword = "admin"; 
+            string adminPassword = "admin";
             string role = "admin";
 
             var existingAdmin = _userRepo.GetUserByUsername(adminUsername);
             if (existingAdmin != null)
             {
-                Console.WriteLine("Admin account already exists.");
                 return;
             }
 
@@ -28,10 +29,6 @@ namespace LANAuthServer.Services
             string userCode = null;
 
             _userRepo.AddUser(adminUsername, hashedPass, role, userCode);
-            Console.WriteLine("Admin account created successfully.");
-            
         }
-
-        
     }
 }

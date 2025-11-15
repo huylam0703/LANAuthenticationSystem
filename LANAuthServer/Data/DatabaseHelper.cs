@@ -13,11 +13,18 @@ namespace LANAuthServer.Data
             "database=lanathentication;" +
             "CharSet=utf8mb4;";
 
+        /// <summary>
+        /// Lấy connection đến MySQL database
+        /// </summary>
         public static MySqlConnection GetConnection()
         {
             return new MySqlConnection(connectionString);
         }
 
+        /// <summary>
+        /// Kiểm tra kết nối database
+        /// </summary>
+        /// <returns>True nếu kết nối thành công</returns>
         public static bool TestConnection()
         {
             try
@@ -44,6 +51,9 @@ namespace LANAuthServer.Data
             }
         }
 
+        /// <summary>
+        /// Xác minh các bảng trong database tồn tại
+        /// </summary>
         public static void VerifyTables()
         {
             try

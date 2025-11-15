@@ -16,10 +16,10 @@ namespace LANAuthServer
         [STAThread]
         static void Main()
         {
-            // Hiển thị console để debug
+            // Hiển thị console
             ConsoleHelper.ShowConsole();
 
-            // Test database connection
+            // Kiểm tra kết nối database
             ConsoleHelper.LogInfo("Testing database connection...");
             if (!DatabaseHelper.TestConnection())
             {
@@ -42,15 +42,15 @@ namespace LANAuthServer
                 return;
             }
 
-            // Verify tables
+            // Xác minh các bảng trong database
             DatabaseHelper.VerifyTables();
 
-            // Khởi tạo TCP Server cho authentication
+            // Khởi tạo TCP Server cho authentication (port 5555)
             ServerListener tcpServer = new ServerListener();
             tcpServer.Start();
             ConsoleHelper.LogSuccess("TCP Server started on port 5555 (Authentication)");
 
-            // Khởi tạo UDP Receiver cho violations và heartbeats
+            // Khởi tạo UDP Receiver cho violations và heartbeats (port 5556)
             UdpReceiverInstance = new UdpReceiver(5556);
             UdpReceiverInstance.OnViolationReceived += (msg) =>
             {
@@ -62,7 +62,7 @@ namespace LANAuthServer
             };
             UdpReceiverInstance.Start();
 
-            // Khởi tạo TCP Server bổ sung cho URL checking
+            // Khởi tạo TCP Server bổ sung cho URL checking (port 5557)
             UrlCheckServerInstance = new TcpServerService(5557);
             UrlCheckServerInstance.OnClientMessage += (msg) =>
             {
@@ -82,7 +82,7 @@ namespace LANAuthServer
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new LoginForm());
 
-            // Cleanup khi đóng
+            // Dọn dẹp khi đóng
             ConsoleHelper.LogInfo("Shutting down services...");
             UdpReceiverInstance?.Stop();
             UrlCheckServerInstance?.Stop();

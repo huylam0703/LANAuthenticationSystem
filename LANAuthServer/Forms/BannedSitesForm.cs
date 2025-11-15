@@ -20,21 +20,19 @@ namespace LANAuthServer.forms
         {
             InitializeComponent();
 
-            // Setup auto-refresh timer
+            // Timer tự động refresh dữ liệu mỗi 5 giây
             _refreshTimer = new Timer();
-            _refreshTimer.Interval = 5000; // 5 giây
+            _refreshTimer.Interval = 5000;
             _refreshTimer.Tick += RefreshTimer_Tick;
 
-            // Setup notification clear timer
+            // Timer tự động xóa thông báo sau 10 giây
             _notificationTimer = new Timer();
-            _notificationTimer.Interval = 10000; // 10 giây
+            _notificationTimer.Interval = 10000;
             _notificationTimer.Tick += NotificationTimer_Tick;
         }
 
         private void BannedSitesForm_Load(object sender, EventArgs e)
         {
-            Console.WriteLine("\n=== BannedSitesForm Loading ===");
-
             try
             {
                 LoadDashboardData();
@@ -42,17 +40,12 @@ namespace LANAuthServer.forms
                 LoadEmployees();
                 RefreshBannedWebList();
 
-                // Đăng ký event từ UDP Receiver
                 RegisterUdpEvents();
 
-                // Bắt đầu auto-refresh
                 _refreshTimer.Start();
-
-                Console.WriteLine("=== Form Loaded Successfully ===\n");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"✗ Error loading form: {ex.Message}");
                 MessageBox.Show(
                     $"Lỗi khi tải form: {ex.Message}",
                     "Lỗi",
@@ -62,89 +55,83 @@ namespace LANAuthServer.forms
             }
         }
 
+        /// <summary>
+        /// Đăng ký sự kiện từ UDP Receiver để nhận thông báo vi phạm và heartbeat
+        /// </summary>
         private void RegisterUdpEvents()
         {
             try
             {
                 if (Program.UdpReceiverInstance != null)
                 {
-                    // Unregister trước để tránh đăng ký nhiều lần
+                    // Hủy đăng ký trước để tránh đăng ký nhiều lần
                     Program.UdpReceiverInstance.OnViolationReceived -= OnViolationReceived;
                     Program.UdpReceiverInstance.OnHeartbeatReceived -= OnHeartbeatReceived;
 
-                    // Register events
+                    // Đăng ký sự kiện mới
                     Program.UdpReceiverInstance.OnViolationReceived += OnViolationReceived;
                     Program.UdpReceiverInstance.OnHeartbeatReceived += OnHeartbeatReceived;
-
-                    Console.WriteLine("✓ UDP Events registered successfully");
-                }
-                else
-                {
-                    Console.WriteLine("✗ UdpReceiverInstance is null!");
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"✗ Error registering UDP events: {ex.Message}");
+                // Bỏ qua lỗi đăng ký sự kiện
             }
         }
 
+        /// <summary>
+        /// Xử lý khi nhận được thông báo vi phạm từ client
+        /// </summary>
         private void OnViolationReceived(string message)
         {
-            Console.WriteLine($">>> OnViolationReceived called with: {message}");
-
-            // Update UI thread-safe
             if (InvokeRequired)
             {
-                Console.WriteLine("  Invoking on UI thread...");
                 try
                 {
                     Invoke(new Action<string>(OnViolationReceived), message);
                 }
-                catch (Exception ex)
+                catch (Exception)
                 {
-                    Console.WriteLine($"  Error invoking: {ex.Message}");
+                    // Bỏ qua lỗi invoke
                 }
                 return;
             }
-
-            Console.WriteLine("  Updating UI...");
 
             try
             {
                 // Hiển thị thông báo
                 ShowNotification($"⚠️ VI PHẠM: {message}");
 
-                // Refresh violations list
+                // Cập nhật danh sách vi phạm và dashboard
                 LoadViolationsList();
-
-                // Refresh dashboard
                 LoadDashboardData();
 
                 FlashForm();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"  ✗ Error handling violation: {ex.Message}");
-                Console.WriteLine($"  Stack: {ex.StackTrace}");
+                // Bỏ qua lỗi xử lý vi phạm
             }
         }
 
+        /// <summary>
+        /// Xử lý khi nhận được heartbeat từ client
+        /// </summary>
         private void OnHeartbeatReceived(string userCode)
         {
-            // Update UI thread-safe
             if (InvokeRequired)
             {
                 Invoke(new Action<string>(OnHeartbeatReceived), userCode);
                 return;
             }
 
-            // Refresh dashboard và employee list để cập nhật số liệu online
+            // Cập nhật dashboard để hiển thị trạng thái online
             LoadDashboardData();
-
-            Console.WriteLine($"Heartbeat received from {userCode} - Dashboard updated");
         }
 
+        /// <summary>
+        /// Hiển thị thông báo trên textbox notification
+        /// </summary>
         private void ShowNotification(string message)
         {
             if (textBoxNonfication != null)
@@ -153,12 +140,14 @@ namespace LANAuthServer.forms
                 textBoxNonfication.BackColor = System.Drawing.Color.LightCoral;
                 textBoxNonfication.ForeColor = System.Drawing.Color.White;
 
-                // Start timer để clear notification
                 _notificationTimer.Stop();
                 _notificationTimer.Start();
             }
         }
 
+        /// <summary>
+        /// Xóa thông báo sau 10 giây
+        /// </summary>
         private void NotificationTimer_Tick(object sender, EventArgs e)
         {
             if (textBoxNonfication != null)
@@ -170,9 +159,11 @@ namespace LANAuthServer.forms
             _notificationTimer.Stop();
         }
 
+        /// <summary>
+        /// Làm nhấp nháy taskbar khi có vi phạm mới
+        /// </summary>
         private void FlashForm()
         {
-            // Flash taskbar
             if (!this.Focused)
             {
                 FlashWindow(this.Handle, true);
@@ -182,25 +173,29 @@ namespace LANAuthServer.forms
         [System.Runtime.InteropServices.DllImport("user32.dll")]
         private static extern bool FlashWindow(IntPtr hwnd, bool bInvert);
 
+        /// <summary>
+        /// Tự động refresh dữ liệu mỗi 5 giây
+        /// </summary>
         private void RefreshTimer_Tick(object sender, EventArgs e)
         {
-            // Auto refresh data mỗi 5 giây
             try
             {
                 LoadDashboardData();
                 LoadViolationsList();
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error in auto-refresh: " + ex.Message);
+                // Bỏ qua lỗi refresh
             }
         }
 
+        /// <summary>
+        /// Tải dữ liệu thống kê cho dashboard
+        /// </summary>
         private void LoadDashboardData()
         {
             try
             {
-                // Load thống kê
                 var users = _userService.GetUsers();
                 int totalUsers = users.Count;
                 int onlineUsers = users.Count(u => u.IsOnline());
@@ -213,15 +208,17 @@ namespace LANAuthServer.forms
                 if (LabelTotalViolate != null) LabelTotalViolate.Text = todayViolations.ToString();
                 if (LabelTotalWebBan != null) LabelTotalWebBan.Text = totalBannedWebs.ToString();
 
-                // Cập nhật biểu đồ
                 UpdateChart(totalUsers, onlineUsers, todayViolations, totalBannedWebs);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error loading dashboard: " + ex.Message);
+                // Bỏ qua lỗi tải dashboard
             }
         }
 
+        /// <summary>
+        /// Cập nhật biểu đồ thống kê
+        /// </summary>
         private void UpdateChart(int totalUsers, int onlineUsers, int todayViolations, int totalBannedWebs)
         {
             try
@@ -240,53 +237,49 @@ namespace LANAuthServer.forms
                 chart1.Series.Add(series);
                 series.IsValueShownAsLabel = true;
 
-                // Màu cho các cột
+                // Đặt màu cho các cột
                 series.Points[0].Color = System.Drawing.Color.SteelBlue;
                 series.Points[1].Color = System.Drawing.Color.Green;
                 series.Points[2].Color = System.Drawing.Color.OrangeRed;
                 series.Points[3].Color = System.Drawing.Color.DarkRed;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error updating chart: " + ex.Message);
+                // Bỏ qua lỗi cập nhật chart
             }
         }
 
+        /// <summary>
+        /// Tải danh sách vi phạm từ database
+        /// </summary>
         private void LoadViolationsList()
         {
             try
             {
-                Console.WriteLine("\n>>> Loading Violations List...");
-
                 var violations = _violationRepo.GetAllViolations();
-                Console.WriteLine($"  Found {violations.Count} violations");
 
                 if (dataGridView1 == null)
                 {
-                    Console.WriteLine("  ✗ dataGridView1 is NULL!");
                     return;
                 }
 
-                // Clear existing data
                 dataGridView1.Rows.Clear();
 
-                // Setup columns nếu chưa có
+                // Thiết lập columns nếu chưa có
                 if (dataGridView1.Columns.Count == 0)
                 {
-                    Console.WriteLine("  Setting up columns...");
                     dataGridView1.Columns.Add("FullName", "Nhân Viên");
                     dataGridView1.Columns.Add("Url", "Website");
                     dataGridView1.Columns.Add("ViolationTime", "Thời gian");
                     dataGridView1.Columns.Add("Status", "Trạng thái");
 
-                    // Set column widths
                     dataGridView1.Columns["FullName"].Width = 200;
                     dataGridView1.Columns["Url"].Width = 250;
                     dataGridView1.Columns["ViolationTime"].Width = 180;
                     dataGridView1.Columns["Status"].Width = 150;
                 }
 
-                // Add data
+                // Thêm dữ liệu
                 foreach (var v in violations)
                 {
                     int rowIndex = dataGridView1.Rows.Add(
@@ -302,17 +295,15 @@ namespace LANAuthServer.forms
                         dataGridView1.Rows[rowIndex].DefaultCellStyle.BackColor =
                             System.Drawing.Color.LightYellow;
                     }
-
-                    Console.WriteLine($"  Added row {rowIndex}: {v.FullName} - {v.Url}");
                 }
 
-                // Update label
+                // Cập nhật label tổng số
                 if (LabelTotalListViolate != null)
                 {
                     LabelTotalListViolate.Text = $"{violations.Count} vi phạm";
                 }
 
-                // Set styling
+                // Thiết lập style
                 dataGridView1.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView1.ColumnHeadersDefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
@@ -320,23 +311,16 @@ namespace LANAuthServer.forms
                 dataGridView1.AllowUserToAddRows = false;
                 dataGridView1.ReadOnly = true;
                 dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-                Console.WriteLine($"  ✓ Loaded {violations.Count} violations successfully");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"  ✗ Error loading violations: {ex.Message}");
-                Console.WriteLine($"  Stack: {ex.StackTrace}");
-
-                MessageBox.Show(
-                    $"Lỗi khi tải danh sách vi phạm:\n{ex.Message}",
-                    "Lỗi",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
+                // Bỏ qua lỗi tải violations
             }
         }
 
+        /// <summary>
+        /// Tải danh sách nhân viên với trạng thái online/offline
+        /// </summary>
         private void LoadEmployees()
         {
             try
@@ -347,6 +331,7 @@ namespace LANAuthServer.forms
 
                 dataGridView2.Rows.Clear();
 
+                // Thiết lập columns nếu chưa có
                 if (dataGridView2.Columns.Count == 0)
                 {
                     dataGridView2.Columns.Add("FullName", "Nhân viên");
@@ -354,13 +339,13 @@ namespace LANAuthServer.forms
                     dataGridView2.Columns.Add("Email", "Email");
                     dataGridView2.Columns.Add("Status", "Trạng thái");
 
-                    // Set column widths
                     dataGridView2.Columns["FullName"].Width = 200;
                     dataGridView2.Columns["UserCode"].Width = 150;
                     dataGridView2.Columns["Email"].Width = 200;
                     dataGridView2.Columns["Status"].Width = 120;
                 }
 
+                // Thêm dữ liệu
                 foreach (var u in users)
                 {
                     bool isOnline = u.IsOnline();
@@ -373,7 +358,7 @@ namespace LANAuthServer.forms
                         statusText
                     );
 
-                    // Highlight online users with green
+                    // Highlight nhân viên online với màu xanh
                     if (isOnline)
                     {
                         dataGridView2.Rows[rowIndex].DefaultCellStyle.BackColor =
@@ -390,24 +375,29 @@ namespace LANAuthServer.forms
                     }
                 }
 
+                // Cập nhật label tổng số
                 if (LabelTotalEmployeeList != null)
                 {
                     int onlineCount = users.Count(u => u.IsOnline());
                     LabelTotalEmployeeList.Text = $"{users.Count} nhân viên ({onlineCount} online)";
                 }
 
+                // Thiết lập style
                 dataGridView2.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dataGridView2.AllowUserToAddRows = false;
                 dataGridView2.ReadOnly = true;
                 dataGridView2.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error loading employees: " + ex.Message);
+                // Bỏ qua lỗi tải employees
             }
         }
 
+        /// <summary>
+        /// Tải danh sách website bị cấm
+        /// </summary>
         private void RefreshBannedWebList()
         {
             try
@@ -418,6 +408,7 @@ namespace LANAuthServer.forms
 
                 dataGridView3.Rows.Clear();
 
+                // Thiết lập columns nếu chưa có
                 if (dataGridView3.Columns.Count == 0)
                 {
                     dataGridView3.Columns.Add("URL", "URL");
@@ -425,11 +416,13 @@ namespace LANAuthServer.forms
                     dataGridView3.Columns.Add("CreatedAt", "Ngày tạo");
                 }
 
+                // Thêm dữ liệu
                 foreach (var item in bannedList)
                 {
                     dataGridView3.Rows.Add(item.Url, item.Reason, item.CreatedAt.ToString("g"));
                 }
 
+                // Cập nhật label tổng số
                 if (LabelTotalWebBannedList != null)
                 {
                     LabelTotalWebBannedList.Text = $"{bannedList.Count} web bị cấm";
@@ -438,9 +431,9 @@ namespace LANAuthServer.forms
                 dataGridView3.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                 dataGridView3.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error loading banned websites: " + ex.Message);
+                // Bỏ qua lỗi tải banned websites
             }
         }
 
@@ -513,15 +506,17 @@ namespace LANAuthServer.forms
             RefreshBannedWebList();
         }
 
+        /// <summary>
+        /// Dọn dẹp tài nguyên khi đóng form
+        /// </summary>
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
             base.OnFormClosing(e);
 
-            // Cleanup
             _refreshTimer?.Stop();
             _notificationTimer?.Stop();
 
-            // Unregister events
+            // Hủy đăng ký events
             if (Program.UdpReceiverInstance != null)
             {
                 Program.UdpReceiverInstance.OnViolationReceived -= OnViolationReceived;

@@ -14,13 +14,15 @@ namespace LANAuthServer.NetWork
         private readonly UserService _userService = new UserService();
         private readonly BannedWebRepository _bannedRepo = new BannedWebRepository();
 
+        /// <summary>
+        /// Bắt đầu lắng nghe kết nối từ client
+        /// </summary>
         public void Start()
         {
             Thread listenerThread = new Thread(() =>
             {
                 TcpListener listener = new TcpListener(IPAddress.Any, 5555);
                 listener.Start();
-                Console.WriteLine("Server đang lắng nghe trên cổng 5555...");
 
                 while (true)
                 {
@@ -34,6 +36,9 @@ namespace LANAuthServer.NetWork
             listenerThread.Start();
         }
 
+        /// <summary>
+        /// Xử lý request từ client
+        /// </summary>
         private void HandleClient(TcpClient client)
         {
             try
@@ -43,45 +48,40 @@ namespace LANAuthServer.NetWork
                     byte[] buffer = new byte[2048];
                     int bytesRead = stream.Read(buffer, 0, buffer.Length);
                     string message = Encoding.UTF8.GetString(buffer, 0, bytesRead);
-                    Console.WriteLine($"Nhận dữ liệu: {message}");
 
-                    // ==== LOGIN REQUEST ====
+                    // Phân loại và xử lý request
                     if (message.StartsWith("LOGIN|"))
                     {
                         HandleLogin(stream, message);
                     }
-
-                    // ==== UPDATE INFO ====
                     else if (message.StartsWith("UPDATE_INFO|"))
                     {
                         HandleUpdateInfo(stream, message);
                     }
-
-                    // ==== GET USER INFO ====
                     else if (message.StartsWith("GET_USER_INFO|"))
                     {
                         HandleGetUserInfo(stream, message);
                     }
-
-                    // ==== CHECK URL ====
                     else if (message.StartsWith("CHECK_URL|"))
                     {
                         HandleCheckUrl(stream, message);
                     }
-
-                    // ==== UNKNOWN COMMAND ====
                     else
                     {
                         SendResponse(stream, "FAIL|Lệnh không hợp lệ");
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Lỗi xử lý client: " + ex.Message);
+                // Bỏ qua lỗi xử lý client
             }
         }
 
+        /// <summary>
+        /// Xử lý request đăng nhập
+        /// Format: LOGIN|username|password
+        /// </summary>
         private void HandleLogin(NetworkStream stream, string message)
         {
             string[] parts = message.Split('|');
@@ -105,7 +105,6 @@ namespace LANAuthServer.NetWork
             if (isMatch)
             {
                 SendResponse(stream, $"SUCCESS|{user.role}|{user.userCode}");
-                Console.WriteLine($"Đăng nhập thành công: {username} ({user.role})");
             }
             else
             {
@@ -113,6 +112,10 @@ namespace LANAuthServer.NetWork
             }
         }
 
+        /// <summary>
+        /// Xử lý request cập nhật thông tin người dùng
+        /// Format: UPDATE_INFO|userCode|fullName|email
+        /// </summary>
         private void HandleUpdateInfo(NetworkStream stream, string message)
         {
             string[] parts = message.Split('|');
@@ -131,6 +134,10 @@ namespace LANAuthServer.NetWork
             SendResponse(stream, response);
         }
 
+        /// <summary>
+        /// Xử lý request lấy thông tin người dùng
+        /// Format: GET_USER_INFO|userCode
+        /// </summary>
         private void HandleGetUserInfo(NetworkStream stream, string message)
         {
             string[] parts = message.Split('|');
@@ -153,7 +160,10 @@ namespace LANAuthServer.NetWork
                 SendResponse(stream, "FAIL|Không tìm thấy người dùng");
             }
         }
-
+        /// <summary>
+        /// Xử lý request kiểm tra URL có bị cấm không
+        /// Format: CHECK_URL|url
+        /// </summary>
         private void HandleCheckUrl(NetworkStream stream, string message)
         {
             string[] parts = message.Split('|');
@@ -168,10 +178,11 @@ namespace LANAuthServer.NetWork
 
             string response = isBanned ? "BANNED" : "OK";
             SendResponse(stream, response);
-
-            Console.WriteLine($"URL check: {url} -> {response}");
         }
 
+        /// <summary>
+        /// Kiểm tra URL có trong danh sách cấm không
+        /// </summary>
         private bool CheckIfUrlBanned(string url)
         {
             try
@@ -186,14 +197,17 @@ namespace LANAuthServer.NetWork
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("Error checking banned URL: " + ex.Message);
+                // Bỏ qua lỗi kiểm tra
             }
 
             return false;
         }
 
+        /// <summary>
+        /// Gửi response về client
+        /// </summary>
         private void SendResponse(NetworkStream stream, string message)
         {
             byte[] data = Encoding.UTF8.GetBytes(message);
